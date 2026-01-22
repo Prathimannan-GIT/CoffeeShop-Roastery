@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Coffee Roastery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- BACK BUTTON -->
+<a href="index.html" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back
+</a>
+
+<section class="auth-page">
+    <div class="auth-card">
+
+        <!-- TOGGLE TABS -->
+        <div class="auth-tabs">
+            <button class="tab active" onclick="showLogin()">Login</button>
+            <button class="tab" onclick="showSignup()">Sign Up</button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm" class="auth-form">
+            <h2>Welcome Back ☕</h2>
+            <p class="auth-subtitle">Login to your account</p>
+
+            <div class="input-group">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Email address" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="btn auth-btn">Login</button>
+        <a href="#" class="forgot-password" onclick="forgotPassword()">
+    Forgot password?
+</a>
+        </form>
+
+        <!-- SIGNUP FORM -->
+        <form id="signupForm" class="auth-form hidden">
+            <h2>Create Account ☕</h2>
+            <p class="auth-subtitle">Join our coffee community</p>
+
+            <div class="input-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="Full Name" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Email address" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="btn auth-btn">Sign Up</button>
+        </form>
+
+    </div>
+</section>
+
+<script>
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+    const tabs = document.querySelectorAll(".tab");
+
+    function showLogin() {
+        loginForm.classList.remove("hidden");
+        signupForm.classList.add("hidden");
+        tabs[0].classList.add("active");
+        tabs[1].classList.remove("active");
+    }
+
+    function showSignup() {
+        signupForm.classList.remove("hidden");
+        loginForm.classList.add("hidden");
+        tabs[1].classList.add("active");
+        tabs[0].classList.remove("active");
+    }
+    
+</script>
+<!-- FOOTER (outside any section or div) -->
+<footer class="site-footer">
+    <div class="footer-left">
+        © 2026 Coffee Shop & Roastery. All rights reserved
+    </div>
+
+    <div class="footer-right">
+        <a href="footer.html">Privacy Policy</a>
+        <span>|</span>
+        <a href="footer.html">Terms of Service</a>
+    </div>
+</footer>
+</body>
+</html>
