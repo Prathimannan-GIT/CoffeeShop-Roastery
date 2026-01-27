@@ -1,84 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
     <meta charset="UTF-8">
-    <title>Contact | Coffee Roastery</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <title>Contact Us - Coffee Haven</title>
+    <meta name="description" content="Get in touch with Coffee Haven. Find our location, hours, and contact information. Visit us for the best coffee experience">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+    
+    <!-- Additional CSS for Contact Page -->
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, rgba(62,39,35,0.95), rgba(93,64,55,0.95)),
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=400&fit=crop') center/cover;
+            padding: 5rem 0;
+            text-align: center;
+            color: var(--text-on-dark);
+        }
+        
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-section {
+            padding: 5rem 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .contact-info-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-medium);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-gold);
+        }
+        
+        .contact-info-card h3 {
+            color: var(--primary-brown);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-info-card p {
+            color: var(--dark-gray);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-form {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .contact-form h3 {
+            color: var(--primary-brown);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .hours-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .hours-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            border-top: 4px solid var(--accent-gold);
+        }
+        
+        .hours-card h4 {
+            color: var(--primary-brown);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .hours-list {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .hours-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--cream);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .map-section {
+            background: var(--cream);
+            padding: 5rem 0;
+        }
+        
+        .map-container {
+            background: linear-gradient(135deg, var(--light-brown), var(--secondary-brown));
+            border-radius: 15px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .social-contact {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-contact-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-gold);
+            color: var(--primary-brown);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .social-contact-btn:hover {
+            background: var(--light-gold);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<a href="javascript:history.back()" class="back-btn">
-    ← Back
-</a>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">☕</div>
+                <span>Coffee Haven</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
-<header>
-    <div class="logo">☕ Coffee Roastery</div>
-    <nav>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="subscription.html">Subscription</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            </li><a href="auth.html" class="login-link"><i class="fa-solid fa-user"></i> Login</a>
-</li>
-        </ul>
-    </nav>
-    <button id="themeToggle" class="theme-toggle">
-    <i class="fa-solid fa-moon"></i>
-</button>
-
-</header>
-
-<section class="section contact-section">
-    <h2>Contact Us</h2>
-
-    <div class="contact-container">
-        <!-- CONTACT INFO -->
-        <div class="shop-contact">
-            <h3>Our Coffee Shop</h3>
-
-            <p><i class="fas fa-location-dot"></i> 123 Roast Street, Coffee City</p>
-            <p><i class="fas fa-phone"></i> +1 234 567 890</p>
-            <p><i class="fas fa-envelope"></i> coffee@roastery.com</p>
-            <p><i class="fas fa-clock"></i> Mon – Sun: 8 AM – 10 PM</p>
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto;">We'd love to hear from you! Whether you have questions, feedback, or want to learn more about our coffee, we're here to help.</p>
         </div>
+    </section>
 
-        <!-- CONTACT FORM -->
-        <form class="contact-form" onsubmit="sendMessage(event)">
-            <h3>Send a Message</h3>
+    <!-- Contact Information & Form -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <div class="contact-info-card">
+                        <h3>📍 Visit Our Coffee Shop</h3>
+                        <p><strong>Coffee Haven</strong><br>
+                        123 Coffee Street<br>
+                        Brew City, BC 12345<br><br>
+                        We're located in the heart of downtown Brew City, easily accessible by public transportation and with plenty of parking available nearby.</p>
+                        
+                        <div class="social-contact">
+                            <a href="#" class="social-contact-btn">🗺️ Get Directions</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <h3>📞 Contact Information</h3>
+                        <p><strong>Phone:</strong> (555) 123-4567<br>
+                        <strong>Email:</strong> hello@coffeehaven.com<br>
+                        <strong>Website:</strong> www.coffeehaven.com<br><br>
+                        Feel free to call us during business hours or send us an email anytime. We typically respond to emails within 24 hours.</p>
+                        
+                        <div class="social-contact">
+                            <a href="tel:5551234567" class="social-contact-btn">📱 Call Now</a>
+                            <a href="mailto:hello@coffeehaven.com" class="social-contact-btn">✉️ Email Us</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <h3>🤝 Connect With Us</h3>
+                        <p>Follow us on social media to stay updated on new coffee arrivals, special promotions, and upcoming events. Join our community of coffee lovers!</p>
+                        
+                        <div class="social-contact">
+                            <a href="#" class="social-contact-btn">f Facebook</a>
+                            <a href="#" class="social-contact-btn">📷 Instagram</a>
+                            <a href="#" class="social-contact-btn">🐦 Twitter</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" id="firstName" class="form-input" placeholder="John" required>
+                                <span class="form-error">Please enter your first name</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" id="lastName" class="form-input" placeholder="Doe" required>
+                                <span class="form-error">Please enter your last name</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-input" placeholder="john.doe@example.com" required>
+                            <span class="form-error">Please enter a valid email address</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number (Optional)</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="(555) 123-4567">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <select id="subject" class="form-input" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="catering">Catering Order</option>
+                                <option value="tour">Roastery Tour</option>
+                                <option value="wholesale">Wholesale Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="form-error">Please select a subject</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-input" rows="5" placeholder="Tell us what's on your mind..." required></textarea>
+                            <span class="form-error">Please enter your message (minimum 10 characters)</span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <input type="text" id="customerName" placeholder="Your Name" required>
-            <input type="email" id="customerEmail" placeholder="Your Email" required>
-            <textarea id="customerMessage" placeholder="Your Message"></textarea>
+    <!-- Business Hours -->
+    <section class="section" style="background: var(--cream);">
+        <div class="container">
+            <h2 class="section-title">Business Hours</h2>
+            <p class="section-subtitle">When you can visit us for your perfect cup</p>
+            
+            <div class="hours-grid">
+                <div class="hours-card">
+                    <h4>☕ Coffee Shop</h4>
+                    <ul class="hours-list">
+                        <li><span>Monday - Friday</span><span>6:00 AM - 10:00 PM</span></li>
+                        <li><span>Saturday</span><span>7:00 AM - 11:00 PM</span></li>
+                        <li><span>Sunday</span><span>7:00 AM - 9:00 PM</span></li>
+                        <li><span>Holidays</span><span>8:00 AM - 6:00 PM</span></li>
+                    </ul>
+                </div>
+                
+                <div class="hours-card">
+                    <h4>🔥 Roastery Tours</h4>
+                    <ul class="hours-list">
+                        <li><span>Wednesday</span><span>2:00 PM - 4:00 PM</span></li>
+                        <li><span>Saturday</span><span>10:00 AM - 12:00 PM</span></li>
+                        <li><span>Sunday</span><span>2:00 PM - 4:00 PM</span></li>
+                        <li><span>By Appointment</span><span>Available</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <button type="submit">
-                <i class="fas fa-paper-plane"></i> Send Message
-            </button>
-        </form>
-    </div>
-</section>
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Find Us</h2>
+            <p class="section-subtitle">Located in the heart of Brew City</p>
+            
+            <div class="map-container">
+                <div>
+                    <h3>📍 Interactive Map</h3>
+                    <p>Map showing Coffee Haven location at 123 Coffee Street, Brew City</p>
+                    <p style="margin-top: 1rem;">Easy access from Main Street and close to public transportation</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Additional Services -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">More than just great coffee</p>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-image">🎂</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Catering</h3>
+                        <p>We cater for events, meetings, and special occasions. Let us bring our exceptional coffee and treats to your next gathering.</p>
+                        <button class="btn btn-primary" onclick="document.getElementById('subject').value='catering'">Request Catering</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image">🏢</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Office Delivery</h3>
+                        <p>Regular coffee delivery for your office. Keep your team productive with fresh, premium coffee delivered weekly.</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('subject').value='wholesale'">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image">🎓</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Coffee Workshops</h3>
+                        <p>Join our coffee brewing workshops and learn the art of making perfect coffee at home from our expert baristas.</p>
+                        <button class="btn btn-primary" onclick="document.getElementById('subject').value='tour'">Book Workshop</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="section">
-    <h2>Visit Our Café</h2>
-    <iframe src="https://www.google.com/maps?q=coffee%20shop&output=embed"></iframe>
-</section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Coffee Haven</h3>
+                    <p>Your premier destination for exceptional coffee experiences. From carefully sourced beans to expertly crafted drinks, we're passionate about bringing you the perfect cup.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">🐦</a>
+                        <a href="#" class="social-icon">in</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="home2.html">Home 2</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📍 123 Coffee Street<br>Brew City, BC 12345</p>
+                    <p>📞 (555) 123-4567</p>
+                    <p>✉️ hello@coffeehaven.com</p>
+                    <p>🕐 Daily: 6:00 AM - 10:00 PM</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Stay Connected</h3>
+                    <p>Subscribe to our newsletter for updates on new coffee arrivals, special offers, and upcoming events.</p>
+                    <form style="margin-top: 1rem;">
+                        <input type="email" placeholder="Your email" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border: none; border-radius: 5px;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Coffee Haven. All rights reserved. | Premium Coffee & Roastery Experience</p>
+            </div>
+        </div>
+    </footer>
 
-<!-- FOOTER (outside any section or div) -->
-<footer class="site-footer">
-    <div class="footer-left">
-        © 2026 Coffee Shop & Roastery. All rights reserved
-    </div>
-
-    <div class="footer-right">
-        <a href="footer.html">Privacy Policy</a>
-        <span>|</span>
-        <a href="footer.html">Terms of Service</a>
-    </div>
-</footer>
-<script src="script.js"></script>
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,125 +1,611 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
     <meta charset="UTF-8">
-    <title>Menu | Coffee Roastery</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <title>Menu - Coffee Haven</title>
+    <meta name="description" content="Explore our complete menu featuring hot coffee, cold beverages, specialty drinks, bakery items, and retail products">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+    
+    <!-- Additional CSS for Menu -->
+    <style>
+        .menu-hero {
+            background: linear-gradient(135deg, rgba(62,39,35,0.95), rgba(93,64,55,0.95)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23FFF8E1" width="1200" height="400"/><circle cx="100" cy="100" r="80" fill="%23FFB300" opacity="0.2"/><circle cx="1100" cy="300" r="100" fill="%238D6E63" opacity="0.2"/><circle cx="600" cy="200" r="60" fill="%235D4037" opacity="0.2"/></svg>') center/cover;
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .menu-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .menu-tab {
+            padding: 0.75rem 1.5rem;
+            background: var(--white);
+            border: 2px solid var(--accent-gold);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-weight: 600;
+            color: var(--primary-brown);
+        }
+        
+        .menu-tab:hover,
+        .menu-tab.active {
+            background: var(--accent-gold);
+            color: var(--primary-brown);
+            transform: translateY(-2px);
+        }
+        
+        .menu-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .menu-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition-smooth);
+            border-left: 4px solid var(--accent-gold);
+        }
+        
+        .menu-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .menu-item-content {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .menu-item-info {
+            flex: 1;
+        }
+        
+        .menu-item-name {
+            font-size: 1.25rem;
+            color: var(--primary-brown);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-primary);
+        }
+        
+        .menu-item-description {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .menu-item-price {
+            font-size: 1.25rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-left: 2rem;
+        }
+        
+        .add-to-cart-btn {
+            padding: 0.5rem 1rem;
+            background: var(--accent-gold);
+            color: var(--primary-brown);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition-fast);
+            margin-left: 1rem;
+        }
+        
+        .add-to-cart-btn:hover {
+            background: var(--light-gold);
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .menu-item-price {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+            
+            .add-to-cart-btn {
+                margin-left: 0;
+                margin-top: 1rem;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-<a href="javascript:history.back()" class="back-btn">
-    ← Back
-</a>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">☕</div>
+                <span>Coffee Haven</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="menu.html" class="nav-link active">Menu</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
-<header>
-    <div class="logo">☕ Coffee Roastery</div>
-    <nav>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="subscription.html">Subscription</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li>
-  <a href="auth.html" class="login-link">
-    <i class="fa-solid fa-user"></i> Login
-  </a>
-</li>
+    <!-- Menu Hero -->
+    <section class="menu-hero">
+        <div class="container">
+            <h1>Our Complete Menu</h1>
+            <p>Discover our carefully crafted selection of premium coffee, beverages, and treats</p>
+        </div>
+    </section>
 
-        </ul>
-    </nav>
-    <button id="themeToggle" class="theme-toggle">
-    <i class="fa-solid fa-moon"></i>
-</header>
+    <!-- Menu Categories -->
+    <section class="section">
+        <div class="container">
+            <div class="menu-tabs">
+                <div class="menu-tab active" onclick="showMenuCategory('hot-coffee')">☕ Hot Coffee</div>
+                <div class="menu-tab" onclick="showMenuCategory('cold-beverages')">🥤 Cold Beverages</div>
+                <div class="menu-tab" onclick="showMenuCategory('specialty-drinks')">✨ Specialty Drinks</div>
+                <div class="menu-tab" onclick="showMenuCategory('bakery-snacks')">🧁 Bakery & Snacks</div>
+                <div class="menu-tab" onclick="showMenuCategory('retail-roastery')">🛍️ Retail & Roastery</div>
+            </div>
 
-<section class="section menu-section">
-    <h2>Signature Menu</h2>
+            <!-- Hot Coffee Section -->
+            <div id="hot-coffee" class="menu-section active">
+                <h2 class="menu-category-title">Hot Coffee</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-image espresso"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Espresso</div>
+                                <div class="menu-item-description">Rich, bold shot of pure espresso with golden crema</div>
+                            </div>
+                            <div class="menu-item-price">$3.25</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Espresso', 3.25)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image cappuccino"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Cappuccino</div>
+                                <div class="menu-item-description">Espresso with steamed milk foam and light dusting of cocoa</div>
+                            </div>
+                            <div class="menu-item-price">$4.50</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Cappuccino', 4.50)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image latte"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Latte</div>
+                                <div class="menu-item-description">Smooth espresso with steamed milk and light foam</div>
+                            </div>
+                            <div class="menu-item-price">$5.25</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Latte', 5.25)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image americano"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Americano</div>
+                                <div class="menu-item-description">Espresso diluted with hot water for a rich, smooth flavor</div>
+                            </div>
+                            <div class="menu-item-price">$3.75</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Americano', 3.75)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image mocha"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Mocha</div>
+                                <div class="menu-item-description">Espresso with chocolate and steamed milk, topped with whipped cream</div>
+                            </div>
+                            <div class="menu-item-price">$5.75</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Mocha', 5.75)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
 
-    <div class="menu-grid">
+            <!-- Cold Beverages Section -->
+            <div id="cold-beverages" class="menu-section">
+                <h2 class="menu-category-title">Cold Beverages</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-image cold-brew"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Cold Brew</div>
+                                <div class="menu-item-description">24-hour steeped coffee, smooth and refreshing with low acidity</div>
+                            </div>
+                            <div class="menu-item-price">$5.25</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Cold Brew', 5.25)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image iced-latte"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Iced Latte</div>
+                                <div class="menu-item-description">Espresso with cold milk over ice, smooth and creamy</div>
+                            </div>
+                            <div class="menu-item-price">$5.50</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Iced Latte', 5.50)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image iced-mocha"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Iced Mocha</div>
+                                <div class="menu-item-description">Chocolate espresso with cold milk and ice, topped with whipped cream</div>
+                            </div>
+                            <div class="menu-item-price">$6.25</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Iced Mocha', 6.25)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image nitro"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Nitro Coffee</div>
+                                <div class="menu-item-description">Cold brew infused with nitrogen for a creamy, cascading texture</div>
+                            </div>
+                            <div class="menu-item-price">$6.50</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Nitro Coffee', 6.50)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image frappe"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Frappé</div>
+                                <div class="menu-item-description">Blended iced coffee with your choice of flavor and whipped cream</div>
+                            </div>
+                            <div class="menu-item-price">$6.75</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Frappé', 6.75)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
 
-        <div class="menu-item espresso">
-            <div class="menu-overlay">
-                <h3>Espresso</h3>
-                <p>Bold & intense</p>
-                <span>$3.50</span>
+            <!-- Specialty Drinks Section -->
+            <div id="specialty-drinks" class="menu-section">
+                <h2 class="menu-category-title">Specialty Drinks</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-image coffee-cup"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Signature Blends</div>
+                                <div class="menu-item-description">Our exclusive house blends with unique flavor combinations</div>
+                            </div>
+                            <div class="menu-item-price">$6.50</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Signature Blends', 6.50)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image coffee-cup"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Seasonal Specials</div>
+                                <div class="menu-item-description">Limited-time drinks featuring seasonal ingredients and flavors</div>
+                            </div>
+                            <div class="menu-item-price">$7.25</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Seasonal Specials', 7.25)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image beans"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Single-Origin Coffee</div>
+                                <div class="menu-item-description">Premium coffee from specific regions, brewed to perfection</div>
+                            </div>
+                            <div class="menu-item-price">$7.50</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Single-Origin Coffee', 7.50)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image coffee-cup"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Pour-Over</div>
+                                <div class="menu-item-description">Handcrafted pour-over coffee highlighting subtle flavor notes</div>
+                            </div>
+                            <div class="menu-item-price">$6.75</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Pour-Over', 6.75)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image coffee-cup"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Manual Brew</div>
+                                <div class="menu-item-description">French press, AeroPress, or siphon brewed to your preference</div>
+                            </div>
+                            <div class="menu-item-price">$7.00</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Manual Brew', 7.00)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bakery & Snacks Section -->
+            <div id="bakery-snacks" class="menu-section">
+                <h2 class="menu-category-title">Bakery & Snacks</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-image croissant"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Croissants</div>
+                                <div class="menu-item-description">Buttery, flaky French pastries, plain or almond</div>
+                            </div>
+                            <div class="menu-item-price">$3.75</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Croissants', 3.75)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image muffin"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Muffins</div>
+                                <div class="menu-item-description">Freshly baked blueberry, chocolate chip, or bran muffins</div>
+                            </div>
+                            <div class="menu-item-price">$3.25</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Muffins', 3.25)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image cookie"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Cookies</div>
+                                <div class="menu-item-description">Chocolate chip, oatmeal raisin, or double chocolate cookies</div>
+                            </div>
+                            <div class="menu-item-price">$2.75</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Cookies', 2.75)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image brownie"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Brownies</div>
+                                <div class="menu-item-description">Rich, fudgy brownies with walnuts or plain</div>
+                            </div>
+                            <div class="menu-item-price">$4.25</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Brownies', 4.25)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image sandwich"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Sandwiches</div>
+                                <div class="menu-item-description">Fresh sandwiches with assorted fillings on artisan bread</div>
+                            </div>
+                            <div class="menu-item-price">$8.50</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Sandwiches', 8.50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Retail & Roastery Section -->
+            <div id="retail-roastery" class="menu-section">
+                <h2 class="menu-category-title">Retail & Roastery</h2>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-image beans"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Coffee Beans</div>
+                                <div class="menu-item-description">Whole bean coffee from our selection of single-origin and blends</div>
+                            </div>
+                            <div class="menu-item-price">$16.99</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Coffee Beans', 16.99)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image ground"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Ground Coffee</div>
+                                <div class="menu-item-description">Pre-ground coffee for drip, French press, or espresso machines</div>
+                            </div>
+                            <div class="menu-item-price">$17.99</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Ground Coffee', 17.99)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image equipment"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Brewing Equipment</div>
+                                <div class="menu-item-description">French presses, pour-over drippers, grinders, and accessories</div>
+                            </div>
+                            <div class="menu-item-price">$24.99</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Brewing Equipment', 24.99)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image gift"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Gift Packs</div>
+                                <div class="menu-item-description">Curated gift sets with coffee, mugs, and accessories</div>
+                            </div>
+                            <div class="menu-item-price">$35.99</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Gift Packs', 35.99)">Add to Cart</button>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-image merchandise"></div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">Merchandise</div>
+                                <div class="menu-item-description">Coffee Haven branded mugs, t-shirts, and accessories</div>
+                            </div>
+                            <div class="menu-item-price">$12.99</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Merchandise', 12.99)">Add to Cart</button>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="menu-item latte">
-            <div class="menu-overlay">
-                <h3>Latte</h3>
-                <p>Smooth & creamy</p>
-                <span>$5.00</span>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Coffee Haven</h3>
+                    <p>Your premier destination for exceptional coffee experiences. From carefully sourced beans to expertly crafted drinks, we're passionate about bringing you the perfect cup.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon">🐦</a>
+                        <a href="#" class="social-icon">in</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="home2.html">Home 2</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📍 123 Coffee Street<br>Brew City, BC 12345</p>
+                    <p>📞 (555) 123-4567</p>
+                    <p>✉️ hello@coffeehaven.com</p>
+                    <p>🕐 Daily: 6:00 AM - 10:00 PM</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Order Information</h3>
+                    <p>Order online for pickup or delivery. We also offer catering for events and office meetings.</p>
+                    <a href="contact.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Place Order</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Coffee Haven. All rights reserved. | Premium Coffee & Roastery Experience</p>
             </div>
         </div>
+    </footer>
 
-        <div class="menu-item cappuccino">
-            <div class="menu-overlay">
-                <h3>Cappuccino</h3>
-                <p>Perfect foam</p>
-                <span>$4.50</span>
-            </div>
-        </div>
-
-        <div class="menu-item coldbrew">
-            <div class="menu-overlay">
-                <h3>Cold Brew</h3>
-                <p>Slow brewed</p>
-                <span>$4.00</span>
-            </div>
-        </div>
-
-        <div class="menu-item mocha">
-            <div class="menu-overlay">
-                <h3>Mocha</h3>
-                <p>Chocolate infused</p>
-                <span>$5.50</span>
-            </div>
-        </div>
-
-        <div class="menu-item americano">
-            <div class="menu-overlay">
-                <h3>Americano</h3>
-                <p>Rich & smooth</p>
-                <span>$3.80</span>
-            </div>
-        </div>
-
-        <div class="menu-item flatwhite">
-            <div class="menu-overlay">
-                <h3>Flat White</h3>
-                <p>Velvety texture</p>
-                <span>$4.80</span>
-            </div>
-        </div>
-
-        <div class="menu-item macchiato">
-            <div class="menu-overlay">
-                <h3>Macchiato</h3>
-                <p>Espresso kissed with milk</p>
-                <span>$4.20</span>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- FOOTER (outside any section or div) -->
-<footer class="site-footer">
-    <div class="footer-left">
-        © 2026 Coffee Shop & Roastery. All rights reserved
-    </div>
-
-    <div class="footer-right">
-        <a href="footer.html">Privacy Policy</a>
-        <span>|</span>
-        <a href="footer.html">Terms of Service</a>
-    </div>
-</footer>
-<script src="script.js"></script>
-
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+    
+    <!-- Menu JavaScript -->
+    <script>
+        function showMenuCategory(categoryId) {
+            // Hide all menu sections
+            const sections = document.querySelectorAll('.menu-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.menu-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(categoryId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
