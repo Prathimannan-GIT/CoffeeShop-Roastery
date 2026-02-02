@@ -19,129 +19,102 @@
     
     <!-- Additional CSS for Login Page -->
     <style>
-        .auth-hero {
-            background: linear-gradient(135deg, rgba(62,39,35,0.95), rgba(93,64,55,0.95)),
-                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=400&fit=crop') center/cover;
-            padding: 3rem 0;
-            text-align: center;
-            color: var(--text-on-dark);
+        /* Remove footer from login page */
+        .footer {
+            display: none !important;
         }
         
-        .auth-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .auth-section {
-            padding: 4rem 0;
-            min-height: 70vh;
+        /* Full viewport layout - no scrolling */
+        .auth-page-wrapper {
+            min-height: 100vh;
             display: flex;
-            align-items: center;
-            background: var(--cream);
+            flex-direction: column;
+            overflow: hidden;
         }
         
-        .auth-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .auth-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--space-md);
+            background: linear-gradient(135deg, rgba(44,24,16,0.92), rgba(74,44,26,0.92)),
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=800&fit=crop&auto=format') center/cover;
+            position: relative;
+        }
+        
+        .auth-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        .auth-form-wrapper {
+            position: relative;
+            z-index: 2;
             width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .auth-info {
-            padding: 2rem;
-        }
-        
-        .auth-info h2 {
-            color: var(--primary-brown);
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .auth-info p {
-            color: var(--dark-gray);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-        
-        .features-list {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-        .features-list li {
-            padding: 0.75rem 0;
-            color: var(--dark-gray);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.05rem;
-        }
-        
-        .features-list li::before {
-            content: '☕';
-            color: var(--accent-gold);
-            font-size: 1.2rem;
+            max-width: 450px;
         }
         
         .auth-form-container {
             background: var(--white);
-            padding: 3rem;
+            padding: var(--space-xl);
             border-radius: 20px;
             box-shadow: var(--shadow-heavy);
+            border: 1px solid rgba(212, 165, 116, 0.1);
         }
         
         .auth-form h3 {
             color: var(--primary-brown);
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: var(--space-lg);
             text-align: center;
+            font-family: var(--font-primary);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-md);
         }
         
         .form-label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-xs);
             color: var(--primary-brown);
             font-weight: 600;
+            font-size: 0.95rem;
         }
         
         .form-input {
             width: 100%;
-            padding: 1rem;
+            padding: var(--space-sm);
             border: 2px solid var(--light-brown);
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1rem;
             transition: var(--transition-fast);
             background: var(--light-cream);
+            font-family: var(--font-secondary);
         }
         
         .form-input:focus {
             outline: none;
             border-color: var(--accent-gold);
-            box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.1);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
             background: var(--white);
-        }
-        
-        .form-error {
-            color: #e74c3c;
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-            display: none;
         }
         
         .form-checkbox {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
         }
         
         .form-checkbox input[type="checkbox"] {
@@ -151,20 +124,55 @@
         }
         
         .form-checkbox label {
-            color: var(--dark-gray);
-            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Premium Login Button Design */
+        .btn-login {
+            width: 100%;
+            padding: var(--space-sm) var(--space-lg);
+            background: linear-gradient(135deg, var(--accent-gold), var(--light-gold));
+            color: var(--primary-brown);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: var(--font-secondary);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .btn-login:focus {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 2px;
+        }
+        
+        .btn-login:active {
+            transform: translateY(0);
         }
         
         .form-links {
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
             border-top: 1px solid var(--cream);
         }
         
         .form-links p {
-            color: var(--dark-gray);
-            margin-bottom: 1rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+            font-size: 0.9rem;
         }
         
         .form-links a {
@@ -179,276 +187,98 @@
             text-decoration: underline;
         }
         
-        .social-login {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--cream);
-        }
-        
-        .social-login p {
-            text-align: center;
-            color: var(--dark-gray);
-            margin-bottom: 1rem;
-        }
-        
-        .social-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .social-btn {
-            flex: 1;
-            padding: 0.75rem;
-            border: 2px solid var(--light-brown);
-            background: var(--white);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            font-weight: 600;
-            color: var(--dark-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        
-        .social-btn:hover {
-            border-color: var(--accent-gold);
-            background: var(--light-cream);
-            transform: translateY(-2px);
-        }
-        
-        .divider {
-            text-align: center;
-            margin: 2rem 0;
-            position: relative;
-        }
-        
-        .divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--cream);
-        }
-        
-        .divider span {
-            background: var(--white);
-            padding: 0 1rem;
-            color: var(--dark-gray);
-            position: relative;
-        }
-        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .auth-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .auth-content {
+                padding: var(--space-sm);
+            }
+            
+            .auth-form-wrapper {
+                max-width: 100%;
             }
             
             .auth-form-container {
-                padding: 2rem;
+                padding: var(--space-lg);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .auth-form-container {
+                padding: var(--space-md);
             }
             
-            .auth-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .auth-info h2 {
-                font-size: 2rem;
+            .btn-login {
+                padding: var(--space-md) var(--space-lg);
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">☕</div>
-                <span>Coffee Haven</span>
-            </div>
-            
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="home2.html" class="nav-link">Home 2</a></li>
-                <li><a href="menu.html" class="nav-link">Menu</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="login.html" class="nav-link active">Login</a></li>
-                <li><a href="register.html" class="nav-link">Register</a></li>
-            </ul>
-            
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Login Hero -->
-    <section class="auth-hero">
-        <div class="container">
-            <h1>Welcome Back</h1>
-            <p style="font-size: 1.1rem;">Login to access your Coffee Haven account and continue your coffee journey</p>
-        </div>
-    </section>
-
-    <!-- Login Section -->
-    <section class="auth-section">
-        <div class="auth-container">
-            <!-- Login Information -->
-            <div class="auth-info">
-                <h2>Your Coffee Journey Continues</h2>
-                <p>Welcome back to Coffee Haven! Login to access your personalized coffee experience, track your orders, and enjoy exclusive member benefits.</p>
+    <div class="auth-page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <nav class="nav-container">
+                <div class="logo">
+                    <div class="logo-icon">☕</div>
+                    <span>Coffee Haven</span>
+                </div>
                 
-                <ul class="features-list">
-                    <li>Track your order history and reorder favorites</li>
-                    <li>Earn rewards points with every purchase</li>
-                    <li>Access exclusive member-only promotions</li>
-                    <li>Save your favorite coffee blends and brewing preferences</li>
-                    <li>Get early access to new coffee arrivals</li>
-                    <li>Personalized recommendations based on your taste</li>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                    <li><a href="menu.html" class="nav-link">Menu</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="login.html" class="nav-link active">Login</a></li>
+                    <li><a href="register.html" class="nav-link">Register</a></li>
                 </ul>
                 
-                <p style="font-weight: 600; color: var(--primary-brown);">New to Coffee Haven?</p>
-                <a href="register.html" class="btn btn-secondary" style="width: 100%;">Create an Account</a>
-            </div>
-            
-            <!-- Login Form -->
-            <div class="auth-form-container">
-                <form id="loginForm">
-                    <h3>Login to Your Account</h3>
-                    
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" class="form-input" placeholder="Enter your email address" required>
-                        <span class="form-error">Please enter a valid email address</span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
-                        <span class="form-error">Password is required</span>
-                    </div>
-                    
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="remember" name="remember">
-                        <label for="remember">Remember me for 30 days</label>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login to Coffee Haven</button>
-                    
-                    <div class="divider">
-                        <span>OR</span>
-                    </div>
-                    
-                    <div class="social-login">
-                        <p>Continue with social account</p>
-                        <div class="social-buttons">
-                            <button type="button" class="social-btn">
-                                <span>f</span> Facebook
-                            </button>
-                            <button type="button" class="social-btn">
-                                <span>G</span> Google
-                            </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Login Content -->
+        <div class="auth-content">
+            <div class="auth-form-wrapper">
+                <div class="auth-form-container">
+                    <form class="auth-form" id="loginForm">
+                        <h3>Welcome Back</h3>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
                         </div>
-                    </div>
-                    
-                    <div class="form-links">
-                        <p><a href="#" onclick="alert('Password reset link sent to your email')">Forgot your password?</a></p>
-                        <p>Don't have an account? <a href="register.html">Sign up now</a></p>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Member Benefits</h2>
-            <p class="section-subtitle">Exclusive perks for Coffee Haven members</p>
-            
-            <div class="grid grid-3">
-                <div class="card">
-                    <div class="card-image">🎁</div>
-                    <div class="card-content">
-                        <h3 class="card-title">Rewards Program</h3>
-                        <p>Earn points with every purchase and redeem them for free coffee, merchandise, and exclusive experiences.</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-image">⚡</div>
-                    <div class="card-content">
-                        <h3 class="card-title">Priority Ordering</h3>
-                        <p>Skip the lines with priority ordering and pickup. Your favorite drinks ready when you arrive.</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-image">🎉</div>
-                    <div class="card-content">
-                        <h3 class="card-title">Exclusive Events</h3>
-                        <p>Join member-only coffee tastings, roastery tours, and workshops with our master roasters.</p>
-                    </div>
+                        
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password" required>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Remember me for 30 days</label>
+                        </div>
+                        
+                        <button type="submit" class="btn-login">Login to Account</button>
+                        
+                        <div class="form-links">
+                            <p>Don't have an account? <a href="register.html">Create Account</a></p>
+                            <p><a href="#">Forgot your password?</a></p>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About Coffee Haven</h3>
-                    <p>Your premier destination for exceptional coffee experiences. From carefully sourced beans to expertly crafted drinks, we're passionate about bringing you the perfect cup.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon">f</a>
-                        <a href="#" class="social-icon">📷</a>
-                        <a href="#" class="social-icon">🐦</a>
-                        <a href="#" class="social-icon">in</a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="home2.html">Home 2</a></li>
-                        <li><a href="menu.html">Menu</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="login.html">Login</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <p>📍 123 Coffee Street<br>Brew City, BC 12345</p>
-                    <p>📞 (555) 123-4567</p>
-                    <p>✉️ hello@coffeehaven.com</p>
-                    <p>🕐 Daily: 6:00 AM - 10:00 PM</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Customer Support</h3>
-                    <p>Need help with your account? Our customer support team is here to assist you with any questions or issues.</p>
-                    <a href="contact.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Get Support</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Coffee Haven. All rights reserved. | Premium Coffee & Roastery Experience</p>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>
 </body>
 </html>
+
+

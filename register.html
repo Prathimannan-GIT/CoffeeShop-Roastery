@@ -19,160 +19,166 @@
     
     <!-- Additional CSS for Register Page -->
     <style>
-        .auth-hero {
-            background: linear-gradient(135deg, rgba(62,39,35,0.95), rgba(93,64,55,0.95)),
-                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=400&fit=crop') center/cover;
-            padding: 3rem 0;
-            text-align: center;
-            color: var(--text-on-dark);
+        /* Remove footer from register page */
+        .footer {
+            display: none !important;
         }
         
-        .auth-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .auth-section {
-            padding: 4rem 0;
-            min-height: 70vh;
+        /* Full viewport layout - no scrolling */
+        .auth-page-wrapper {
+            min-height: 100vh;
             display: flex;
-            align-items: center;
-            background: var(--cream);
+            flex-direction: column;
+            overflow: hidden;
         }
         
-        .auth-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .auth-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--space-md);
+            background: linear-gradient(135deg, rgba(44,24,16,0.92), rgba(74,44,26,0.92)),
+                        url('https://images.unsplash.com/photo-1511920183-9f7106036526?w=1200&h=800&fit=crop&auto=format') center/cover;
+            position: relative;
+        }
+        
+        .auth-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        .auth-form-wrapper {
+            position: relative;
+            z-index: 2;
             width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .auth-info {
-            padding: 2rem;
-        }
-        
-        .auth-info h2 {
-            color: var(--primary-brown);
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .auth-info p {
-            color: var(--dark-gray);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-        
-        .benefits-list {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-        .benefits-list li {
-            padding: 0.75rem 0;
-            color: var(--dark-gray);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.05rem;
-        }
-        
-        .benefits-list li::before {
-            content: '✨';
-            color: var(--accent-gold);
-            font-size: 1.2rem;
+            max-width: 500px;
         }
         
         .auth-form-container {
             background: var(--white);
-            padding: 3rem;
+            padding: var(--space-xl);
             border-radius: 20px;
             box-shadow: var(--shadow-heavy);
+            border: 1px solid rgba(212, 165, 116, 0.1);
         }
         
         .auth-form h3 {
             color: var(--primary-brown);
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: var(--space-lg);
             text-align: center;
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            font-family: var(--font-primary);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-md);
         }
         
         .form-label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-xs);
             color: var(--primary-brown);
             font-weight: 600;
+            font-size: 0.95rem;
         }
         
         .form-input {
             width: 100%;
-            padding: 1rem;
+            padding: var(--space-sm);
             border: 2px solid var(--light-brown);
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1rem;
             transition: var(--transition-fast);
             background: var(--light-cream);
+            font-family: var(--font-secondary);
         }
         
         .form-input:focus {
             outline: none;
             border-color: var(--accent-gold);
-            box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.1);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
             background: var(--white);
         }
         
-        .form-error {
-            color: #e74c3c;
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-            display: none;
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-sm);
         }
         
         .form-checkbox {
             display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            align-items: center;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
         }
         
         .form-checkbox input[type="checkbox"] {
             width: 18px;
             height: 18px;
             accent-color: var(--accent-gold);
-            margin-top: 2px;
         }
         
         .form-checkbox label {
-            color: var(--dark-gray);
+            color: var(--text-muted);
             font-size: 0.9rem;
-            line-height: 1.5;
+        }
+        
+        /* Premium Register Button Design */
+        .btn-register {
+            width: 100%;
+            padding: var(--space-sm) var(--space-lg);
+            background: linear-gradient(135deg, var(--accent-gold), var(--light-gold));
+            color: var(--primary-brown);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: var(--font-secondary);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .btn-register:focus {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 2px;
+        }
+        
+        .btn-register:active {
+            transform: translateY(0);
         }
         
         .form-links {
             text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
             border-top: 1px solid var(--cream);
         }
         
         .form-links p {
-            color: var(--dark-gray);
-            margin-bottom: 1rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+            font-size: 0.9rem;
         }
         
         .form-links a {
@@ -187,364 +193,128 @@
             text-decoration: underline;
         }
         
-        .social-login {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--cream);
-        }
-        
-        .social-login p {
-            text-align: center;
-            color: var(--dark-gray);
-            margin-bottom: 1rem;
-        }
-        
-        .social-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .social-btn {
-            flex: 1;
-            padding: 0.75rem;
-            border: 2px solid var(--light-brown);
-            background: var(--white);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            font-weight: 600;
-            color: var(--dark-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        
-        .social-btn:hover {
-            border-color: var(--accent-gold);
-            background: var(--light-cream);
-            transform: translateY(-2px);
-        }
-        
-        .divider {
-            text-align: center;
-            margin: 2rem 0;
-            position: relative;
-        }
-        
-        .divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--cream);
-        }
-        
-        .divider span {
-            background: var(--white);
-            padding: 0 1rem;
-            color: var(--dark-gray);
-            position: relative;
-        }
-        
-        .password-strength {
-            margin-top: 0.5rem;
-            height: 4px;
-            background: var(--cream);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-        
-        .password-strength-bar {
-            height: 100%;
-            width: 0;
-            transition: var(--transition-fast);
-            border-radius: 2px;
-        }
-        
-        .strength-weak { background: #e74c3c; width: 33%; }
-        .strength-medium { background: #f39c12; width: 66%; }
-        .strength-strong { background: #27ae60; width: 100%; }
-        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .auth-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .auth-content {
+                padding: var(--space-sm);
+            }
+            
+            .auth-form-wrapper {
+                max-width: 100%;
             }
             
             .auth-form-container {
-                padding: 2rem;
+                padding: var(--space-lg);
             }
             
             .form-row {
                 grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .auth-form-container {
+                padding: var(--space-md);
             }
             
-            .auth-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .auth-info h2 {
-                font-size: 2rem;
+            .btn-register {
+                padding: var(--space-md) var(--space-lg);
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">☕</div>
-                <span>Coffee Haven</span>
-            </div>
-            
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="home2.html" class="nav-link">Home 2</a></li>
-                <li><a href="menu.html" class="nav-link">Menu</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="login.html" class="nav-link">Login</a></li>
-                <li><a href="register.html" class="nav-link active">Register</a></li>
-            </ul>
-            
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Register Hero -->
-    <section class="auth-hero">
-        <div class="container">
-            <h1>Join Coffee Haven</h1>
-            <p style="font-size: 1.1rem;">Create your account and start your premium coffee journey with exclusive member benefits</p>
-        </div>
-    </section>
-
-    <!-- Register Section -->
-    <section class="auth-section">
-        <div class="auth-container">
-            <!-- Register Information -->
-            <div class="auth-info">
-                <h2>Start Your Coffee Journey</h2>
-                <p>Join the Coffee Haven family and discover a world of exceptional coffee experiences. As a member, you'll unlock exclusive benefits designed to enhance your coffee journey.</p>
+    <div class="auth-page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <nav class="nav-container">
+                <div class="logo">
+                    <div class="logo-icon">☕</div>
+                    <span>Coffee Haven</span>
+                </div>
                 
-                <ul class="benefits-list">
-                    <li>Join our rewards program and earn points with every purchase</li>
-                    <li>Get personalized coffee recommendations based on your taste profile</li>
-                    <li>Access member-only promotions and early coffee releases</li>
-                    <li>Enjoy priority ordering and skip the lines during busy times</li>
-                    <li>Receive invitations to exclusive coffee tasting events</li>
-                    <li>Track your order history and easily reorder your favorites</li>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                    <li><a href="menu.html" class="nav-link">Menu</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                    <li><a href="register.html" class="nav-link active">Register</a></li>
                 </ul>
                 
-                <p style="font-weight: 600; color: var(--primary-brown);">Already have an account?</p>
-                <a href="login.html" class="btn btn-secondary" style="width: 100%;">Sign In Instead</a>
-            </div>
-            
-            <!-- Register Form -->
-            <div class="auth-form-container">
-                <form id="registerForm">
-                    <h3>Create Your Account</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName" class="form-label">First Name</label>
-                            <input type="text" id="firstName" class="form-input" placeholder="John" required>
-                            <span class="form-error">Please enter your first name</span>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Register Content -->
+        <div class="auth-content">
+            <div class="auth-form-wrapper">
+                <div class="auth-form-container">
+                    <form class="auth-form" id="registerForm">
+                        <h3>Create Account</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Enter your first name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Enter your last name" required>
+                            </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input type="text" id="lastName" class="form-input" placeholder="Doe" required>
-                            <span class="form-error">Please enter your last name</span>
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
                         </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" class="form-input" placeholder="john.doe@example.com" required>
-                        <span class="form-error">Please enter a valid email address</span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone" class="form-label">Phone Number (Optional)</label>
-                        <input type="tel" id="phone" class="form-input" placeholder="(555) 123-4567">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" id="password" class="form-input" placeholder="Create a strong password" required>
-                        <span class="form-error">Password must be at least 6 characters</span>
-                        <div class="password-strength">
-                            <div class="password-strength-bar" id="passwordStrength"></div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="Enter your phone number">
                         </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" id="confirmPassword" class="form-input" placeholder="Confirm your password" required>
-                        <span class="form-error">Passwords do not match</span>
-                    </div>
-                    
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="terms" name="terms" required>
-                        <label for="terms">I agree to the <a href="#" style="color: var(--accent-gold);">Terms of Service</a> and <a href="#" style="color: var(--accent-gold);">Privacy Policy</a></label>
-                    </div>
-                    
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="newsletter" name="newsletter">
-                        <label for="newsletter">Send me coffee updates and exclusive offers via email</label>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
-                    
-                    <div class="divider">
-                        <span>OR</span>
-                    </div>
-                    
-                    <div class="social-login">
-                        <p>Sign up with social account</p>
-                        <div class="social-buttons">
-                            <button type="button" class="social-btn">
-                                <span>f</span> Facebook
-                            </button>
-                            <button type="button" class="social-btn">
-                                <span>G</span> Google
-                            </button>
+                        
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" name="password" class="form-input" placeholder="Create a strong password" required>
                         </div>
-                    </div>
-                    
-                    <div class="form-links">
-                        <p>Already have an account? <a href="login.html">Sign in here</a></p>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Welcome Benefits Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Welcome Benefits</h2>
-            <p class="section-subtitle">Start enjoying these perks as soon as you join</p>
-            
-            <div class="grid grid-3">
-                <div class="card">
-                    <div class="card-image">🎁</div>
-                    <div class="card-content">
-                        <h3 class="card-title">Welcome Bonus</h3>
-                        <p>Get 500 bonus points instantly when you create your account - enough for a free coffee on your next visit!</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-image">🚚</div>
-                    <div class="card-content">
-                        <h3 class="card-title">Free Delivery</h3>
-                        <p>Enjoy free delivery on your first online order when you sign up. No minimum purchase required.</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-image">☕</div>
-                    <div class="card-content">
-                        <h3 class="card-title">Birthday Treat</h3>
-                        <p>Receive a complimentary drink of your choice during your birthday month. Our gift to you!</p>
-                    </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" placeholder="Confirm your password" required>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">I agree to the Terms of Service and Privacy Policy</label>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Send me coffee updates and special offers</label>
+                        </div>
+                        
+                        <button type="submit" class="btn-register">Create Account</button>
+                        
+                        <div class="form-links">
+                            <p>Already have an account? <a href="login.html">Sign In</a></p>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About Coffee Haven</h3>
-                    <p>Your premier destination for exceptional coffee experiences. From carefully sourced beans to expertly crafted drinks, we're passionate about bringing you the perfect cup.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon">f</a>
-                        <a href="#" class="social-icon">📷</a>
-                        <a href="#" class="social-icon">🐦</a>
-                        <a href="#" class="social-icon">in</a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="home2.html">Home 2</a></li>
-                        <li><a href="menu.html">Menu</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="register.html">Register</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <p>📍 123 Coffee Street<br>Brew City, BC 12345</p>
-                    <p>📞 (555) 123-4567</p>
-                    <p>✉️ hello@coffeehaven.com</p>
-                    <p>🕐 Daily: 6:00 AM - 10:00 PM</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Need Help?</h3>
-                    <p>Have questions about creating an account or our membership benefits? Our support team is here to help!</p>
-                    <a href="contact.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Contact Support</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Coffee Haven. All rights reserved. | Premium Coffee & Roastery Experience</p>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>
-    
-    <!-- Password Strength Checker -->
-    <script>
-        document.getElementById('password').addEventListener('input', function() {
-            const password = this.value;
-            const strengthBar = document.getElementById('passwordStrength');
-            
-            if (password.length === 0) {
-                strengthBar.className = 'password-strength-bar';
-                return;
-            }
-            
-            let strength = 0;
-            
-            // Check password strength
-            if (password.length >= 6) strength++;
-            if (password.length >= 10) strength++;
-            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
-            if (/[0-9]/.test(password)) strength++;
-            if (/[^a-zA-Z0-9]/.test(password)) strength++;
-            
-            // Update strength bar
-            strengthBar.className = 'password-strength-bar';
-            
-            if (strength <= 2) {
-                strengthBar.classList.add('strength-weak');
-            } else if (strength <= 4) {
-                strengthBar.classList.add('strength-medium');
-            } else {
-                strengthBar.classList.add('strength-strong');
-            }
-        });
-    </script>
 </body>
 </html>
+
