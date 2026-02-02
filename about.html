@@ -20,83 +20,148 @@
     <!-- Additional CSS for About Page -->
     <style>
         .about-hero {
-            background: linear-gradient(135deg, rgba(62,39,35,0.95), rgba(93,64,55,0.95)),
-                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=400&fit=crop') center/cover;
-            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(44,24,16,0.92), rgba(74,44,26,0.92)),
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=400&fit=crop&auto=format') center/cover;
+            padding: var(--space-xxl) 0;
             text-align: center;
             color: var(--text-on-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        .about-hero .container {
+            position: relative;
+            z-index: 2;
         }
         
         .about-hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            margin-bottom: var(--space-sm);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .story-section {
-            padding: 5rem 0;
+            padding: var(--space-xxl) 0;
             background: var(--cream);
         }
         
         .story-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: var(--space-xl);
             align-items: center;
-            margin-bottom: 4rem;
+            margin-bottom: var(--space-xl);
         }
         
         .story-content h3 {
             color: var(--primary-brown);
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: var(--space-md);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .story-content p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: var(--space-sm);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .story-image {
-            background: linear-gradient(135deg, var(--light-brown), var(--secondary-brown));
-            border-radius: 15px;
-            padding: 3rem;
-            text-align: center;
-            color: var(--white);
-            font-size: 4rem;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: url('https://images.unsplash.com/photo-1511920183-9f7106036526?w=600&h=400&fit=crop&auto=format') center/cover;
+            border-radius: 16px;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .story-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(44,24,16,0.3), rgba(74,44,26,0.3));
         }
         
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
         }
         
         .value-card {
             background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
+            padding: var(--space-lg);
+            border-radius: 16px;
             text-align: center;
             box-shadow: var(--shadow-light);
             transition: var(--transition-smooth);
             border-top: 4px solid var(--accent-gold);
+            overflow: hidden;
         }
         
         .value-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: var(--shadow-medium);
         }
         
         .value-icon {
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-md);
+            color: var(--accent-gold);
         }
         
         .value-title {
             color: var(--primary-brown);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            margin-bottom: var(--space-sm);
             font-family: var(--font-primary);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
+        
+        .value-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        @media (max-width: 768px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            
+            .story-image {
+                min-height: 300px;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+        }
+    </style>
         
         .team-section {
             padding: 5rem 0;

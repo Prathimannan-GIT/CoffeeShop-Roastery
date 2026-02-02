@@ -20,28 +20,49 @@
     <!-- Additional CSS for Menu -->
     <style>
         .menu-hero {
-            background: linear-gradient(135deg, rgba(62,39,35,0.95), rgba(93,64,55,0.95)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23FFF8E1" width="1200" height="400"/><circle cx="100" cy="100" r="80" fill="%23FFB300" opacity="0.2"/><circle cx="1100" cy="300" r="100" fill="%238D6E63" opacity="0.2"/><circle cx="600" cy="200" r="60" fill="%235D4037" opacity="0.2"/></svg>') center/cover;
-            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(44,24,16,0.92), rgba(74,44,26,0.92)),
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=400&fit=crop&auto=format') center/cover;
+            padding: var(--space-xxl) 0;
             text-align: center;
-            color: var(--white);
+            color: var(--text-on-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        .menu-hero .container {
+            position: relative;
+            z-index: 2;
         }
         
         .menu-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: clamp(2.5rem, 6vw, 3rem);
+            margin-bottom: var(--space-sm);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .menu-tabs {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
+            gap: var(--space-sm);
+            margin: var(--space-lg) 0;
             flex-wrap: wrap;
         }
         
         .menu-tab {
-            padding: 0.75rem 1.5rem;
+            padding: var(--space-sm) var(--space-md);
             background: var(--white);
             border: 2px solid var(--accent-gold);
             border-radius: 25px;
@@ -49,6 +70,8 @@
             transition: var(--transition-smooth);
             font-weight: 600;
             color: var(--primary-brown);
+            font-family: var(--font-secondary);
+            white-space: nowrap;
         }
         
         .menu-tab:hover,
@@ -56,6 +79,7 @@
             background: var(--accent-gold);
             color: var(--primary-brown);
             transform: translateY(-2px);
+            box-shadow: var(--shadow-light);
         }
         
         .menu-section {
@@ -75,13 +99,14 @@
         .menu-item {
             display: flex;
             align-items: center;
-            padding: 1.5rem;
+            padding: var(--space-md);
             background: var(--white);
-            border-radius: 10px;
-            margin-bottom: 1rem;
+            border-radius: 12px;
+            margin-bottom: var(--space-sm);
             box-shadow: var(--shadow-light);
             transition: var(--transition-smooth);
             border-left: 4px solid var(--accent-gold);
+            overflow: hidden;
         }
         
         .menu-item:hover {
@@ -98,60 +123,82 @@
         
         .menu-item-info {
             flex: 1;
+            padding-right: var(--space-sm);
         }
         
         .menu-item-name {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: var(--primary-brown);
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-xs);
             font-family: var(--font-primary);
+            font-weight: 600;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .menu-item-description {
-            color: var(--dark-gray);
+            color: var(--text-muted);
             font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .menu-item-price {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: var(--accent-gold);
             font-weight: 700;
-            margin-left: 2rem;
+            font-family: var(--font-primary);
+            white-space: nowrap;
         }
         
-        .add-to-cart-btn {
-            padding: 0.5rem 1rem;
-            background: var(--accent-gold);
+        .menu-category-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
             color: var(--primary-brown);
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition-fast);
-            margin-left: 1rem;
+            margin-bottom: var(--space-lg);
+            text-align: center;
+            font-family: var(--font-primary);
+            position: relative;
+            padding-bottom: var(--space-sm);
         }
         
-        .add-to-cart-btn:hover {
-            background: var(--light-gold);
-            transform: scale(1.05);
+        .menu-category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 2px;
         }
         
         @media (max-width: 768px) {
+            .menu-tabs {
+                gap: var(--space-xs);
+            }
+            
+            .menu-tab {
+                padding: var(--space-xs) var(--space-sm);
+                font-size: 0.9rem;
+            }
+            
             .menu-item {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: var(--space-sm);
             }
             
-            .menu-item-price {
-                margin-left: 0;
-                margin-top: 0.5rem;
-            }
-            
-            .add-to-cart-btn {
-                margin-left: 0;
-                margin-top: 1rem;
+            .menu-item-content {
                 width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-xs);
+            }
+            
+            .menu-item-info {
+                padding-right: 0;
             }
         }
     </style>

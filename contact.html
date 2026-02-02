@@ -20,159 +20,163 @@
     <!-- Additional CSS for Contact Page -->
     <style>
         .contact-hero {
-            background: linear-gradient(135deg, rgba(62,39,35,0.95), rgba(93,64,55,0.95)),
-                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=400&fit=crop') center/cover;
-            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(44,24,16,0.92), rgba(74,44,26,0.92)),
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=400&fit=crop&auto=format') center/cover;
+            padding: var(--space-xxl) 0;
             text-align: center;
             color: var(--text-on-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        .contact-hero .container {
+            position: relative;
+            z-index: 2;
         }
         
         .contact-hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            margin-bottom: var(--space-sm);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .contact-section {
-            padding: 5rem 0;
+            padding: var(--space-xxl) 0;
         }
         
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: var(--space-xl);
             align-items: start;
         }
         
         .contact-info-card {
             background: var(--white);
-            padding: 2.5rem;
-            border-radius: 15px;
+            padding: var(--space-lg);
+            border-radius: 16px;
             box-shadow: var(--shadow-medium);
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-lg);
             border-left: 4px solid var(--accent-gold);
+            overflow: hidden;
         }
         
         .contact-info-card h3 {
             color: var(--primary-brown);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            margin-bottom: var(--space-md);
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: var(--space-xs);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .contact-info-card p {
-            color: var(--dark-gray);
-            line-height: 1.8;
-            margin-bottom: 1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: var(--space-sm);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .contact-form {
             background: var(--white);
-            padding: 2.5rem;
-            border-radius: 15px;
+            padding: var(--space-lg);
+            border-radius: 16px;
             box-shadow: var(--shadow-medium);
         }
         
         .contact-form h3 {
             color: var(--primary-brown);
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-lg);
             text-align: center;
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: var(--space-sm);
         }
         
         .hours-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
         }
         
         .hours-card {
             background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
+            padding: var(--space-lg);
+            border-radius: 16px;
             box-shadow: var(--shadow-light);
-            text-align: center;
             border-top: 4px solid var(--accent-gold);
+            text-align: center;
         }
         
         .hours-card h4 {
             color: var(--primary-brown);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-        
-        .hours-list {
-            list-style: none;
-            text-align: left;
-        }
-        
-        .hours-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--cream);
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .hours-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .map-section {
-            background: var(--cream);
-            padding: 5rem 0;
+            margin-bottom: var(--space-sm);
+            font-family: var(--font-primary);
         }
         
         .map-container {
-            background: linear-gradient(135deg, var(--light-brown), var(--secondary-brown));
-            border-radius: 15px;
+            background: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&h=400&fit=crop&auto=format') center/cover;
             height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.2rem;
-            text-align: center;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
             box-shadow: var(--shadow-medium);
+            margin-top: var(--space-xl);
         }
         
-        .social-contact {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(44,24,16,0.2), rgba(74,44,26,0.2));
         }
         
-        .social-contact-btn {
-            padding: 0.75rem 1.5rem;
-            background: var(--accent-gold);
-            color: var(--primary-brown);
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition-smooth);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+        .map-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--text-on-dark);
+            z-index: 2;
         }
         
-        .social-contact-btn:hover {
-            background: var(--light-gold);
-            transform: translateY(-2px);
+        .map-overlay h3 {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
         @media (max-width: 768px) {
             .contact-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: var(--space-lg);
             }
             
             .form-row {
@@ -181,10 +185,11 @@
             
             .hours-grid {
                 grid-template-columns: 1fr;
+                gap: var(--space-md);
             }
             
-            .contact-hero h1 {
-                font-size: 2.5rem;
+            .map-container {
+                height: 300px;
             }
         }
     </style>
