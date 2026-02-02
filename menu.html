@@ -257,60 +257,70 @@
                         <div class="menu-item-image espresso"></div>
                         <div class="menu-item-content">
                             <div class="menu-item-info">
-                                <div class="menu-item-name">Espresso</div>
-                                <div class="menu-item-description">Rich, bold shot of pure espresso with golden crema</div>
+                                <h3 class="menu-item-name">Espresso</h3>
+                                <p class="menu-item-description">Rich, bold shot of pure espresso with golden crema</p>
                             </div>
-                            <div class="menu-item-price">$3.25</div>
+                            <div class="menu-item-footer">
+                                <span class="menu-item-price">$3.25</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('Espresso', 3.25)">Add to Cart</button>
+                            </div>
                         </div>
-                        <button class="add-to-cart-btn" onclick="addToCart('Espresso', 3.25)">Add to Cart</button>
                     </div>
                     
                     <div class="menu-item">
                         <div class="menu-item-image cappuccino"></div>
                         <div class="menu-item-content">
                             <div class="menu-item-info">
-                                <div class="menu-item-name">Cappuccino</div>
-                                <div class="menu-item-description">Espresso with steamed milk foam and light dusting of cocoa</div>
+                                <h3 class="menu-item-name">Cappuccino</h3>
+                                <p class="menu-item-description">Espresso with steamed milk foam and light dusting of cocoa</p>
                             </div>
-                            <div class="menu-item-price">$4.50</div>
+                            <div class="menu-item-footer">
+                                <span class="menu-item-price">$4.50</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('Cappuccino', 4.50)">Add to Cart</button>
+                            </div>
                         </div>
-                        <button class="add-to-cart-btn" onclick="addToCart('Cappuccino', 4.50)">Add to Cart</button>
                     </div>
                     
                     <div class="menu-item">
                         <div class="menu-item-image latte"></div>
                         <div class="menu-item-content">
                             <div class="menu-item-info">
-                                <div class="menu-item-name">Latte</div>
-                                <div class="menu-item-description">Smooth espresso with steamed milk and light foam</div>
+                                <h3 class="menu-item-name">Latte</h3>
+                                <p class="menu-item-description">Smooth espresso with steamed milk and light foam</p>
                             </div>
-                            <div class="menu-item-price">$5.25</div>
+                            <div class="menu-item-footer">
+                                <span class="menu-item-price">$5.25</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('Latte', 5.25)">Add to Cart</button>
+                            </div>
                         </div>
-                        <button class="add-to-cart-btn" onclick="addToCart('Latte', 5.25)">Add to Cart</button>
                     </div>
                     
                     <div class="menu-item">
                         <div class="menu-item-image americano"></div>
                         <div class="menu-item-content">
                             <div class="menu-item-info">
-                                <div class="menu-item-name">Americano</div>
-                                <div class="menu-item-description">Espresso diluted with hot water for a rich, smooth flavor</div>
+                                <h3 class="menu-item-name">Americano</h3>
+                                <p class="menu-item-description">Espresso diluted with hot water for a rich, smooth flavor</p>
                             </div>
-                            <div class="menu-item-price">$3.75</div>
+                            <div class="menu-item-footer">
+                                <span class="menu-item-price">$3.75</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('Americano', 3.75)">Add to Cart</button>
+                            </div>
                         </div>
-                        <button class="add-to-cart-btn" onclick="addToCart('Americano', 3.75)">Add to Cart</button>
                     </div>
                     
                     <div class="menu-item">
                         <div class="menu-item-image mocha"></div>
                         <div class="menu-item-content">
                             <div class="menu-item-info">
-                                <div class="menu-item-name">Mocha</div>
-                                <div class="menu-item-description">Espresso with chocolate and steamed milk, topped with whipped cream</div>
+                                <h3 class="menu-item-name">Mocha</h3>
+                                <p class="menu-item-description">Espresso with chocolate and steamed milk, topped with whipped cream</p>
                             </div>
-                            <div class="menu-item-price">$5.75</div>
+                            <div class="menu-item-footer">
+                                <span class="menu-item-price">$5.75</span>
+                                <button class="add-to-cart-btn" onclick="addToCart('Mocha', 5.75)">Add to Cart</button>
+                            </div>
                         </div>
-                        <button class="add-to-cart-btn" onclick="addToCart('Mocha', 5.75)">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -575,6 +585,110 @@
                             <div class="menu-item-price">$12.99</div>
                         </div>
                         <button class="add-to-cart-btn" onclick="addToCart('Merchandise', 12.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seasonal Specials Section -->
+    <section class="section" style="background: var(--cream);">
+        <div class="container">
+            <h2 class="section-title">🍂 Seasonal Specials</h2>
+            <p class="section-subtitle">Limited-time offerings featuring the finest seasonal ingredients</p>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-image" style="background: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop&auto=format') center/cover;"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Pumpkin Spice Latte</h3>
+                        <p>Our signature espresso with real pumpkin puree, warm spices, and steamed milk</p>
+                        <div class="card-price">$6.75</div>
+                        <button class="btn btn-primary" onclick="addToCart('Pumpkin Spice Latte', 6.75)">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image" style="background: url('https://images.unsplash.com/photo-1511920183-9f7106036526?w=400&h=200&fit=crop&auto=format') center/cover;"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Peppermint Mocha</h3>
+                        <p>Rich chocolate espresso with refreshing peppermint and whipped cream</p>
+                        <div class="card-price">$6.50</div>
+                        <button class="btn btn-primary" onclick="addToCart('Peppermint Mocha', 6.50)">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image" style="background: url('https://images.unsplash.com/photo-1564890369478-c89ca6d9cda9?w=400&h=200&fit=crop&auto=format') center/cover;"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Cinnamon Roll Cold Brew</h3>
+                        <p>Smooth cold brew infused with cinnamon flavors and sweet cream foam</p>
+                        <div class="card-price">$6.25</div>
+                        <button class="btn btn-primary" onclick="addToCart('Cinnamon Roll Cold Brew', 6.25)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brewing Methods & Bean Origins Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">☕ Brewing Methods & Bean Origins</h2>
+            <p class="section-subtitle">Discover the art and science behind perfect coffee extraction</p>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Brewing Methods</h3>
+                        <p><strong>Pour-Over:</strong> Precise, clean extraction highlighting delicate flavors</p>
+                        <p><strong>French Press:</strong> Full-bodied, rich flavor with natural oils</p>
+                        <p><strong>AeroPress:</strong> Versatile, quick extraction with bright acidity</p>
+                        <p><strong>Cold Brew:</strong> 24-hour steeping for smooth, low-acidity coffee</p>
+                        <p><strong>Espresso:</strong> High-pressure extraction for intense, concentrated flavor</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">Bean Origins</h3>
+                        <p><strong>Ethiopia:</strong> Bright, fruity, wine-like with floral notes</p>
+                        <p><strong>Colombia:</strong> Balanced, nutty, chocolate-forward profile</p>
+                        <p><strong>Guatemala:</strong> Complex, spicy, with citrus undertones</p>
+                        <p><strong>Sumatra:</strong> Earthy, full-bodied with low acidity</p>
+                        <p><strong>Brazil:</strong> Creamy, chocolatey, with nutty sweetness</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-3" style="margin-top: var(--space-lg);">
+                <div class="card">
+                    <div class="card-image" style="background: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=200&fit=crop&auto=format') center/cover;"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Single Origin Ethiopia</h3>
+                        <p>Yirgacheffe with bright citrus and blueberry notes</p>
+                        <div class="card-price">$18.99</div>
+                        <button class="btn btn-primary" onclick="addToCart('Single Origin Ethiopia', 18.99)">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image" style="background: url('https://images.unsplash.com/photo-1517449453835-3db026517f4b?w=400&h=200&fit=crop&auto=format') center/cover;"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Colombian Supremo</h3>
+                        <p>Medium roast with caramel and vanilla undertones</p>
+                        <div class="card-price">$16.99</div>
+                        <button class="btn btn-primary" onclick="addToCart('Colombian Supremo', 16.99)">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-image" style="background: url('https://images.unsplash.com/photo-1584534641230-65e5d3e6425c?w=400&h=200&fit=crop&auto=format') center/cover;"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Guatemala Antigua</h3>
+                        <p>Dark roast with chocolate and spice complexity</p>
+                        <div class="card-price">$17.99</div>
+                        <button class="btn btn-primary" onclick="addToCart('Guatemala Antigua', 17.99)">Add to Cart</button>
                     </div>
                 </div>
             </div>
