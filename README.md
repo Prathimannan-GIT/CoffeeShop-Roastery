@@ -35,7 +35,7 @@ This site is deployed on GitHub Pages and automatically builds/deployes via GitH
 - Form validation
 - Smooth animations and transitions
 
-## 🛠️ Technologies
+## Technologies Used
 - HTML5
 - CSS3 (with CSS Variables)
 - Vanilla JavaScript

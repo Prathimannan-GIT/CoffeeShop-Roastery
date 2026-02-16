@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Coffee Haven</title>
+    <meta name="description" content="Explore our coffee gallery featuring beautiful photos of our coffee shop, drinks, and roastery">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+    
+    <!-- Additional CSS for Gallery Page -->
+    <style>
+        .gallery-hero {
+            background: linear-gradient(135deg, rgba(44,24,16,0.92), rgba(74,44,26,0.92)),
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=600&fit=crop&auto=format') center/cover;
+            padding: var(--space-xxl) 0;
+            text-align: center;
+            color: var(--text-on-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        .gallery-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gallery-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            margin-bottom: var(--space-sm);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: var(--text-on-dark) !important;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin: var(--space-lg) 0;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: var(--space-sm) var(--space-md);
+            background: var(--white);
+            border: 2px solid var(--accent-gold);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-weight: 600;
+            color: var(--primary-brown);
+            font-family: var(--font-secondary);
+            white-space: nowrap;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent-gold);
+            color: var(--primary-brown);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-light);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--white);
+            padding: var(--space-md);
+            transform: translateY(100%);
+            transition: var(--transition-smooth);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h3 {
+            margin-bottom: var(--space-xs);
+            font-size: 1.1rem;
+        }
+        
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: var(--space-md);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">☕</div>
+                <span>Coffee Haven</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Gallery Hero -->
+    <section class="gallery-hero">
+        <div class="container">
+            <h1>Coffee Gallery</h1>
+            <p>Visual journey through our coffee world</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section">
+        <div class="container">
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="coffee">Coffee</button>
+                <button class="filter-btn" data-filter="shop">Shop</button>
+                <button class="filter-btn" data-filter="roastery">Roastery</button>
+                <button class="filter-btn" data-filter="people">People</button>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="coffee">
+                    <img src="https://images.unsplash.com/photo-1511920183-9f7106036526?w=400&h=400&fit=crop&auto=format" alt="Espresso">
+                    <div class="gallery-overlay">
+                        <h3>Perfect Espresso</h3>
+                        <p>Our signature espresso shot</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="shop">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=400&fit=crop&auto=format" alt="Coffee Shop Interior">
+                    <div class="gallery-overlay">
+                        <h3>Cozy Atmosphere</h3>
+                        <p>Warm and inviting space</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="roastery">
+                    <img src="https://images.unsplash.com/photo-1517449453835-3db026517f4b?w=400&h=400&fit=crop&auto=format" alt="Coffee Beans">
+                    <div class="gallery-overlay">
+                        <h3>Freshly Roasted</h3>
+                        <p>Premium coffee beans</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="coffee">
+                    <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cda9?w=400&h=400&fit=crop&auto=format" alt="Cappuccino">
+                    <div class="gallery-overlay">
+                        <h3>Artistic Cappuccino</h3>
+                        <p>Latte art perfection</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="people">
+                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&h=400&fit=crop&auto=format" alt="Customers">
+                    <div class="gallery-overlay">
+                        <h3>Happy Customers</h3>
+                        <p>Enjoying their coffee</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="shop">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=400&fit=crop&auto=format" alt="Barista">
+                    <div class="gallery-overlay">
+                        <h3>Expert Baristas</h3>
+                        <p>Coffee crafting masters</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="roastery">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688c0fc03?w=400&h=400&fit=crop&auto=format" alt="Roasting Process">
+                    <div class="gallery-overlay">
+                        <h3>Roasting Process</h3>
+                        <p>Traditional roasting methods</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="coffee">
+                    <img src="https://images.unsplash.com/photo-1534790566855-4c7b8ec9f7d5?w=400&h=400&fit=crop&auto=format" alt="Latte">
+                    <div class="gallery-overlay">
+                        <h3>Creamy Latte</h3>
+                        <p>Smooth and rich flavor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Coffee Haven</h3>
+                    <p>Your premier destination for exceptional coffee experiences. From carefully sourced beans to expertly crafted drinks, we're passionate about bringing you the perfect cup.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon facebook" aria-label="Facebook"></a>
+                        <a href="#" class="social-icon instagram" aria-label="Instagram"></a>
+                        <a href="#" class="social-icon twitter" aria-label="Twitter"></a>
+                        <a href="#" class="social-icon linkedin" aria-label="LinkedIn"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><span class="icon-location"></span> 123 Coffee Street<br>Brew City, BC 12345</p>
+                    <p><span class="icon-phone"></span> (555) 123-4567</p>
+                    <p><span class="icon-email"></span> hello@coffeehaven.com</p>
+                    <p><span class="icon-clock"></span> Daily: 6:00 AM - 10:00 PM</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get special offers and updates about new coffee arrivals!</p>
+                    <form style="margin-top: 1rem;">
+                        <input type="email" placeholder="Your email" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border: none; border-radius: 5px;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Coffee Haven. All rights reserved. | Premium Coffee & Roastery Experience</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+    <script>
+        // Gallery filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

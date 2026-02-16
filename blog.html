@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Coffee Haven</title>
+    <meta name="description" content="Read our coffee blog for tips, stories, and insights about coffee culture, brewing methods, and industry news">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+    
+    <!-- Additional CSS for Blog Page -->
+    <style>
+        .blog-hero {
+            background: linear-gradient(135deg, rgba(44,24,16,0.92), rgba(74,44,26,0.92)),
+                        url('https://images.unsplash.com/photo-1484752862514-3c09f0c1eb1f?w=1200&h=600&fit=crop&auto=format') center/cover;
+            padding: var(--space-xxl) 0;
+            text-align: center;
+            color: var(--text-on-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        .blog-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .blog-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            margin-bottom: var(--space-sm);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: var(--text-on-dark) !important;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .blog-categories {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin: var(--space-lg) 0;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: var(--space-sm) var(--space-md);
+            background: var(--white);
+            border: 2px solid var(--accent-gold);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-weight: 600;
+            color: var(--primary-brown);
+            font-family: var(--font-secondary);
+            white-space: nowrap;
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--accent-gold);
+            color: var(--primary-brown);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-light);
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-xl);
+        }
+        
+        .blog-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+        
+        .blog-card:hover .blog-image img {
+            transform: scale(1.1);
+        }
+        
+        .blog-content {
+            padding: var(--space-lg);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        .blog-category {
+            background: var(--accent-gold);
+            color: var(--primary-brown);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        .blog-date {
+            font-weight: 500;
+        }
+        
+        .blog-title {
+            color: var(--primary-brown);
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+            font-family: var(--font-primary);
+            font-weight: 700;
+            line-height: 1.3;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .blog-excerpt {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: var(--space-md);
+            flex: 1;
+        }
+        
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--cream);
+        }
+        
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light-brown);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+        }
+        
+        .author-info {
+            flex: 1;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            color: var(--primary-brown);
+            font-size: 0.9rem;
+        }
+        
+        .author-role {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            margin-top: var(--space-md);
+        }
+        
+        .read-more:hover {
+            color: var(--primary-brown);
+            transform: translateX(4px);
+        }
+        
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">☕</div>
+                <span>Coffee Haven</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="login.html" class="nav-link">Login</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Coffee Blog</h1>
+            <p>Stories, tips, and insights from the world of coffee</p>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="section">
+        <div class="container">
+            <div class="blog-categories">
+                <button class="category-btn active" data-category="all">All Posts</button>
+                <button class="category-btn" data-category="brewing">Brewing Tips</button>
+                <button class="category-btn" data-category="culture">Coffee Culture</button>
+                <button class="category-btn" data-category="origin">Origin Stories</button>
+                <button class="category-btn" data-category="recipes">Recipes</button>
+            </div>
+            
+            <div class="blog-grid">
+                <article class="blog-card" data-category="brewing">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1511920183-9f7106036526?w=400&h=250&fit=crop&auto=format" alt="Perfect Espresso">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Brewing Tips</span>
+                            <span class="blog-date">March 15, 2026</span>
+                        </div>
+                        <h2 class="blog-title">The Perfect Espresso: A Complete Guide</h2>
+                        <p class="blog-excerpt">Learn the secrets to pulling the perfect espresso shot every time. From grind size to extraction time, we cover everything you need to know.</p>
+                        <div class="blog-author">
+                            <div class="author-avatar">JD</div>
+                            <div class="author-info">
+                                <div class="author-name">John Doe</div>
+                                <div class="author-role">Head Barista</div>
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card" data-category="culture">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=250&fit=crop&auto=format" alt="Coffee Shop Culture">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Coffee Culture</span>
+                            <span class="blog-date">March 10, 2026</span>
+                        </div>
+                        <h2 class="blog-title">The Rise of Third Wave Coffee</h2>
+                        <p class="blog-excerpt">Explore how third wave coffee culture is transforming the way we think about coffee, from bean to cup and everything in between.</p>
+                        <div class="blog-author">
+                            <div class="author-avatar">SM</div>
+                            <div class="author-info">
+                                <div class="author-name">Sarah Miller</div>
+                                <div class="author-role">Coffee Writer</div>
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card" data-category="origin">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1517449453835-3db026517f4b?w=400&h=250&fit=crop&auto=format" alt="Coffee Origins">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Origin Stories</span>
+                            <span class="blog-date">March 5, 2026</span>
+                        </div>
+                        <h2 class="blog-title">Journey to Ethiopian Yirgacheffe</h2>
+                        <p class="blog-excerpt">Discover the rich history and unique flavor profile of Ethiopian Yirgacheffe coffee, one of the world's most prized coffee varieties.</p>
+                        <div class="blog-author">
+                            <div class="author-avatar">MJ</div>
+                            <div class="author-info">
+                                <div class="author-name">Mike Johnson</div>
+                                <div class="author-role">Roast Master</div>
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card" data-category="recipes">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cda9?w=400&h=250&fit=crop&auto=format" alt="Cappuccino Recipe">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Recipes</span>
+                            <span class="blog-date">February 28, 2026</span>
+                        </div>
+                        <h2 class="blog-title">Latte Art Masterclass</h2>
+                        <p class="blog-excerpt">Step-by-step guide to creating beautiful latte art designs. From hearts to rosettas, learn the techniques that will impress your customers.</p>
+                        <div class="blog-author">
+                            <div class="author-avatar">EC</div>
+                            <div class="author-info">
+                                <div class="author-name">Emma Chen</div>
+                                <div class="author-role">Latte Artist</div>
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card" data-category="brewing">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1534790566855-4c7b8ec9f7d5?w=400&h=250&fit=crop&auto=format" alt="Pour Over Coffee">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Brewing Tips</span>
+                            <span class="blog-date">February 20, 2026</span>
+                        </div>
+                        <h2 class="blog-title">Pour Over Perfection</h2>
+                        <p class="blog-excerpt">Master the art of pour over coffee brewing with our comprehensive guide covering equipment, techniques, and common mistakes to avoid.</p>
+                        <div class="blog-author">
+                            <div class="author-avatar">TW</div>
+                            <div class="author-info">
+                                <div class="author-name">Tom Wilson</div>
+                                <div class="author-role">Coffee Educator</div>
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card" data-category="culture">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&h=250&fit=crop&auto=format" alt="Coffee Community">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Coffee Culture</span>
+                            <span class="blog-date">February 15, 2026</span>
+                        </div>
+                        <h2 class="blog-title">Building Coffee Communities</h2>
+                        <p class="blog-excerpt">How local coffee shops are becoming community hubs and the role they play in bringing people together in the digital age.</p>
+                        <div class="blog-author">
+                            <div class="author-avatar">LR</div>
+                            <div class="author-info">
+                                <div class="author-name">Lisa Rodriguez</div>
+                                <div class="author-role">Community Manager</div>
+                            </div>
+                        </div>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Coffee Haven</h3>
+                    <p>Your premier destination for exceptional coffee experiences. From carefully sourced beans to expertly crafted drinks, we're passionate about bringing you the perfect cup.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon facebook" aria-label="Facebook"></a>
+                        <a href="#" class="social-icon instagram" aria-label="Instagram"></a>
+                        <a href="#" class="social-icon twitter" aria-label="Twitter"></a>
+                        <a href="#" class="social-icon linkedin" aria-label="LinkedIn"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><span class="icon-location"></span> 123 Coffee Street<br>Brew City, BC 12345</p>
+                    <p><span class="icon-phone"></span> (555) 123-4567</p>
+                    <p><span class="icon-email"></span> hello@coffeehaven.com</p>
+                    <p><span class="icon-clock"></span> Daily: 6:00 AM - 10:00 PM</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get special offers and updates about new coffee arrivals!</p>
+                    <form style="margin-top: 1rem;">
+                        <input type="email" placeholder="Your email" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border: none; border-radius: 5px;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Coffee Haven. All rights reserved. | Premium Coffee & Roastery Experience</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+    <script>
+        // Blog category filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const blogCards = document.querySelectorAll('.blog-card');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.dataset.category;
+                    
+                    blogCards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

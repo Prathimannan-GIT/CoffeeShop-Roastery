@@ -19,6 +19,11 @@
     
     <!-- Additional CSS for Login Page -->
     <style>
+        /* Remove header from login/signup pages */
+        .header {
+            display: none !important;
+        }
+        
         /* Remove footer from login page */
         .footer {
             display: none !important;
@@ -187,7 +192,74 @@
             text-decoration: underline;
         }
         
-        /* Responsive Design */
+        /* Social login buttons */
+        .social-login {
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--cream);
+        }
+        
+        .social-login h4 {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: var(--space-md);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .social-buttons {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+        }
+        
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--light-brown);
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            font-size: 18px;
+            color: var(--primary-brown);
+            font-weight: bold;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--accent-gold);
+            background: var(--accent-gold);
+            color: var(--primary-brown);
+        }
+        
+        .social-btn.facebook:hover {
+            background: #1877f2;
+            border-color: #1877f2;
+            color: var(--white);
+        }
+        
+        .social-btn.instagram:hover {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            border-color: #e6683c;
+            color: var(--white);
+        }
+        
+        .social-btn.twitter:hover {
+            background: #1da1f2;
+            border-color: #1da1f2;
+            color: var(--white);
+        }
+        
+        .social-btn.linkedin:hover {
+            background: #0077b5;
+            border-color: #0077b5;
+            color: var(--white);
+        }
         @media (max-width: 768px) {
             .auth-content {
                 padding: var(--space-sm);
@@ -216,31 +288,7 @@
 </head>
 <body>
     <div class="auth-page-wrapper">
-        <!-- Header -->
-        <header class="header">
-            <nav class="nav-container">
-                <div class="logo">
-                    <div class="logo-icon">☕</div>
-                    <span>Coffee Haven</span>
-                </div>
-                
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="home2.html" class="nav-link">Home 2</a></li>
-                    <li><a href="menu.html" class="nav-link">Menu</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="login.html" class="nav-link active">Login</a></li>
-                    <li><a href="register.html" class="nav-link">Register</a></li>
-                </ul>
-                
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
-        </header>
+        <!-- Main Content -->
 
         <!-- Login Content -->
         <div class="auth-content">
@@ -269,6 +317,16 @@
                         <div class="form-links">
                             <p>Don't have an account? <a href="register.html">Create Account</a></p>
                             <p><a href="#">Forgot your password?</a></p>
+                        </div>
+                        
+                        <div class="social-login">
+                            <h4>Or login with</h4>
+                            <div class="social-buttons">
+                                <a href="#" class="social-btn facebook" aria-label="Login with Facebook">f</a>
+                                <a href="#" class="social-btn instagram" aria-label="Login with Instagram"><span class="icon-globe"></span></a>
+                                <a href="#" class="social-btn twitter" aria-label="Login with Twitter"><span class="icon-globe"></span></a>
+                                <a href="#" class="social-btn linkedin" aria-label="Login with LinkedIn">in</a>
+                            </div>
                         </div>
                     </form>
                 </div>
