@@ -314,12 +314,19 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav-container">
-            <div class="logo">
+            <a href="index.html" class="logo" style="text-decoration: none;">
                 <div class="logo-icon">☕</div>
                 <span>Coffee Haven</span>
-            </div>
+            </a>
 
             <ul class="nav-menu">
+                <li class="mobile-theme-toggle theme-toggle-btn">
+                    <span>Theme</span>
+                    <button class="theme-btn" aria-label="Toggle dark mode">
+                        <span class="theme-icon-light">☀️</span>
+                        <span class="theme-icon-dark">🌙</span>
+                    </button>
+                </li>
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="home2.html" class="nav-link">Home 2</a></li>
                 <li><a href="menu.html" class="nav-link active">Menu</a></li>
@@ -332,6 +339,10 @@
             </ul>
 
             <div class="nav-buttons">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+                    <span class="theme-icon-light">☀️</span>
+                    <span class="theme-icon-dark">🌙</span>
+                </button>
                 <a href="login.html" class="btn btn-secondary nav-btn">Login</a>
                 <a href="register.html" class="btn btn-primary nav-btn">Register</a>
             </div>
@@ -348,9 +359,12 @@
     <section class="menu-hero">
         <div class="container">
             <h1>Our Complete Menu</h1>
-            <p>Our coffee buyers travel to producing regions in search of distinctive coffees grown in different micro climates with rich soil and higher altitudes.
+            <p>Our coffee buyers travel to producing regions in search of distinctive coffees grown in different micro
+                climates with rich soil and higher altitudes.
 
-Our strategic partnerships allow us to select the best, pick of crop. Every year we source unique and distinctive coffees. We also adjust to the seasonality of each crop, sourcing from various regions to ensure we always have optimal freshness in our coffee.</p>
+                Our strategic partnerships allow us to select the best, pick of crop. Every year we source unique and
+                distinctive coffees. We also adjust to the seasonality of each crop, sourcing from various regions to
+                ensure we always have optimal freshness in our coffee.</p>
         </div>
     </section>
     <section class="section" style="background: var(--cream);">

@@ -1,13 +1,34 @@
 // Coffee Shop & Roastery - Main JavaScript File
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize all functionality
+    initThemeToggle();
     initMobileMenu();
     initActiveNavigation();
     initFormValidation();
     initScrollEffects();
     initAnimations();
 });
+
+// ===== Theme Toggle =====
+function initThemeToggle() {
+    const html = document.documentElement;
+
+    // Apply saved theme (default to light)
+    const savedTheme = localStorage.getItem('coffeeTheme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+
+    // Wire up every theme-toggle button on the page (desktop + mobile)
+    const toggleBtns = document.querySelectorAll('#theme-toggle, .theme-toggle-btn');
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const current = html.getAttribute('data-theme') || 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('coffeeTheme', next);
+        });
+    });
+}
 
 // ===== Mobile Menu Toggle =====
 function initMobileMenu() {
@@ -16,21 +37,21 @@ function initMobileMenu() {
     const navLinks = document.querySelectorAll('.nav-link');
 
     if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
+        hamburger.addEventListener('click', function () {
             navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
         });
 
         // Close menu when clicking on a link
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 navMenu.classList.remove('active');
                 hamburger.classList.remove('active');
             });
         });
 
         // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
                 navMenu.classList.remove('active');
                 hamburger.classList.remove('active');
@@ -47,8 +68,8 @@ function initActiveNavigation() {
 
     navLinks.forEach(link => {
         const linkPage = link.getAttribute('href').replace('.html', '').replace('#', '');
-        
-        if (linkPage === currentPage || 
+
+        if (linkPage === currentPage ||
             (currentPage === 'index' && linkPage === 'home') ||
             (currentPage === 'home2' && linkPage === 'home-2')) {
             link.classList.add('active');
@@ -63,7 +84,7 @@ function initFormValidation() {
     const contactForm = document.getElementById('contactForm');
 
     if (loginForm) {
-        loginForm.addEventListener('submit', function(e) {
+        loginForm.addEventListener('submit', function (e) {
             e.preventDefault();
             if (validateLoginForm()) {
                 showSuccessMessage('Login successful! Redirecting...');
@@ -75,7 +96,7 @@ function initFormValidation() {
     }
 
     if (registerForm) {
-        registerForm.addEventListener('submit', function(e) {
+        registerForm.addEventListener('submit', function (e) {
             e.preventDefault();
             if (validateRegisterForm()) {
                 showSuccessMessage('Registration successful! Redirecting to login...');
@@ -87,7 +108,7 @@ function initFormValidation() {
     }
 
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             if (validateContactForm()) {
                 showSuccessMessage('Message sent successfully! We\'ll get back to you soon.');
@@ -217,7 +238,7 @@ function validateContactForm() {
 function showError(input, message) {
     const formGroup = input.parentElement;
     const errorElement = formGroup.querySelector('.form-error');
-    
+
     input.style.borderColor = '#e74c3c';
     if (errorElement) {
         errorElement.textContent = message;
@@ -228,7 +249,7 @@ function showError(input, message) {
 function hideError(input) {
     const formGroup = input.parentElement;
     const errorElement = formGroup.querySelector('.form-error');
-    
+
     input.style.borderColor = '';
     if (errorElement) {
         errorElement.style.display = 'none';
@@ -280,7 +301,7 @@ function initScrollEffects() {
     const header = document.querySelector('.header');
     let lastScroll = 0;
 
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const currentScroll = window.pageYOffset;
 
         // Header shadow on scroll
@@ -302,7 +323,7 @@ function initAnimations() {
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries) {
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('fade-in-up');
@@ -335,10 +356,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ===== Add to Cart Functionality =====
 function addToCart(itemName, price) {
     let cart = JSON.parse(localStorage.getItem('coffeeCart')) || [];
-    
+
     // Check if item already exists
     const existingItem = cart.find(item => item.name === itemName);
-    
+
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
@@ -348,7 +369,7 @@ function addToCart(itemName, price) {
             quantity: 1
         });
     }
-    
+
     localStorage.setItem('coffeeCart', JSON.stringify(cart));
     updateCartCount();
     showSuccessMessage(`${itemName} added to cart!`);
@@ -357,7 +378,7 @@ function addToCart(itemName, price) {
 function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem('coffeeCart')) || [];
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-    
+
     // Update cart count display if element exists
     const cartCount = document.querySelector('.cart-count');
     if (cartCount) {
@@ -383,7 +404,7 @@ function showLoading() {
         justify-content: center;
         z-index: 9999;
     `;
-    
+
     const coffeeLoader = document.createElement('div');
     coffeeLoader.style.cssText = `
         width: 50px;
@@ -393,10 +414,10 @@ function showLoading() {
         border-radius: 50%;
         animation: spin 1s linear infinite;
     `;
-    
+
     loader.appendChild(coffeeLoader);
     document.body.appendChild(loader);
-    
+
     return loader;
 }
 

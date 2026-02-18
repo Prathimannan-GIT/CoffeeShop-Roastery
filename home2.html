@@ -306,12 +306,19 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav-container">
-            <div class="logo">
+            <a href="index.html" class="logo" style="text-decoration: none;">
                 <div class="logo-icon">☕</div>
                 <span>Coffee Haven</span>
-            </div>
+            </a>
 
             <ul class="nav-menu">
+                <li class="mobile-theme-toggle theme-toggle-btn">
+                    <span>Theme</span>
+                    <button class="theme-btn" aria-label="Toggle dark mode">
+                        <span class="theme-icon-light">☀️</span>
+                        <span class="theme-icon-dark">🌙</span>
+                    </button>
+                </li>
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="home2.html" class="nav-link active">Home 2</a></li>
                 <li><a href="menu.html" class="nav-link">Menu</a></li>
@@ -324,6 +331,10 @@
             </ul>
 
             <div class="nav-buttons">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+                    <span class="theme-icon-light">☀️</span>
+                    <span class="theme-icon-dark">🌙</span>
+                </button>
                 <a href="login.html" class="btn btn-secondary nav-btn">Login</a>
                 <a href="register.html" class="btn btn-primary nav-btn">Register</a>
             </div>
@@ -342,7 +353,7 @@
             <h1>The Art of Coffee Roasting</h1>
             <p style="font-size: 1.25rem; margin-bottom: 2rem;">Journey through our meticulous roasting process where
                 science meets artistry to create the perfect coffee experience</p>
-            
+
         </div>
     </section>
 
@@ -423,7 +434,7 @@
                         style="background-image: url('https://assets.beanbox.com/blog_images/HhnNa4LSqyOi0s5Q8Yjn.jpeg');">
                     </div>
                     <div class="bean-card-content">
-                        <h3>Ethiopian Yirgacheffe</h3>
+                        <h3> Yirgacheffe</h3>
                         <p>Bright, floral notes with hints of blueberry and citrus. A delicate tea-like body with
                             wine-like acidity.</p>
                         <div style="margin-top: 1rem; font-weight: bold;">$22.99</div>
@@ -437,7 +448,7 @@
                         style="background-image: url('https://blog.suvie.com/wp-content/uploads/2020/02/Guatemala-Antigua-coffee.jpg');">
                     </div>
                     <div class="bean-card-content">
-                        <h3>Guatemala Antigua</h3>
+                        <h3>Guatemala </h3>
                         <p>Complex, smoky flavor with spice and chocolate notes. Full body with a rich, velvety texture.
                         </p>
                         <div style="margin-top: 1rem; font-weight: bold;">$21.99</div>
@@ -449,7 +460,7 @@
                         style="background-image: url('https://buycoffeecanada.com/cdn/shop/products/kenya-green-coffee-beans_dbe41f74-3ac5-4a43-8ca8-4c1ac1ffbd1f_800x.jpg?v=1537999748');">
                     </div>
                     <div class="bean-card-content">
-                        <h3>Kenya Abraham linchlon</h3>
+                        <h3>Kenya </h3>
                         <p>Bright, bold flavor with blackcurrant and grapefruit notes. Wine-like acidity with a juicy
                             mouthfeel.</p>
                         <div style="margin-top: 1rem; font-weight: bold;">$24.99</div>

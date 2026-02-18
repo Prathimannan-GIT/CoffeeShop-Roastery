@@ -58,7 +58,8 @@
             cursor: pointer;
             transition: var(--transition-smooth);
             font-weight: 600;
-            color: var(--primary-brown);
+            color: #2C1810;
+            /* Always dark brown for visibility on light/gold backgrounds */
             font-family: var(--font-secondary);
             white-space: nowrap;
         }
@@ -66,7 +67,7 @@
         .filter-btn:hover,
         .filter-btn.active {
             background: var(--accent-gold);
-            color: var(--primary-brown);
+            color: #2C1810;
             transform: translateY(-2px);
             box-shadow: var(--shadow-light);
         }
@@ -147,7 +148,7 @@
 
         .category-tag {
             background: var(--accent-gold);
-            color: var(--primary-brown);
+            color: #2C1810;
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -182,12 +183,19 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav-container">
-            <div class="logo">
+            <a href="index.html" class="logo" style="text-decoration: none;">
                 <div class="logo-icon">☕</div>
                 <span>Coffee Haven</span>
-            </div>
+            </a>
 
             <ul class="nav-menu">
+                <li class="mobile-theme-toggle theme-toggle-btn">
+                    <span>Theme</span>
+                    <button class="theme-btn" aria-label="Toggle dark mode">
+                        <span class="theme-icon-light">☀️</span>
+                        <span class="theme-icon-dark">🌙</span>
+                    </button>
+                </li>
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="home2.html" class="nav-link">Home 2</a></li>
                 <li><a href="menu.html" class="nav-link">Menu</a></li>
@@ -200,6 +208,10 @@
             </ul>
 
             <div class="nav-buttons">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+                    <span class="theme-icon-light">☀️</span>
+                    <span class="theme-icon-dark">🌙</span>
+                </button>
                 <a href="login.html" class="btn btn-secondary nav-btn">Login</a>
                 <a href="register.html" class="btn btn-primary nav-btn">Register</a>
             </div>
@@ -216,7 +228,10 @@
     <section class="gallery-hero">
         <div class="container">
             <h1>Coffee Gallery</h1>
-            <p>At Coffee Gallery Hawaii Roastmaster, we are committed to producing only the best coffee beans, drinks, and products befitting our cherished and highly discerning clientele. We roast and serve artisan coffee from coffee plantation in Oahu, Maui and Kona, indulgent homemade food, delicious and nourishing granola, and offer premium mugs and accessories in our shop.</p>
+            <p>At Coffee Gallery Hawaii Roastmaster, we are committed to producing only the best coffee beans, drinks,
+                and products befitting our cherished and highly discerning clientele. We roast and serve artisan coffee
+                from coffee plantation in Oahu, Maui and Kona, indulgent homemade food, delicious and nourishing
+                granola, and offer premium mugs and accessories in our shop.</p>
         </div>
     </section>
 

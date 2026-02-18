@@ -58,7 +58,8 @@
             cursor: pointer;
             transition: var(--transition-smooth);
             font-weight: 600;
-            color: var(--primary-brown);
+            color: #2C1810;
+            /* Always dark brown for visibility on light/gold backgrounds */
             font-family: var(--font-secondary);
             white-space: nowrap;
         }
@@ -66,7 +67,7 @@
         .category-btn:hover,
         .category-btn.active {
             background: var(--accent-gold);
-            color: var(--primary-brown);
+            color: #2C1810;
             transform: translateY(-2px);
             box-shadow: var(--shadow-light);
         }
@@ -131,7 +132,7 @@
 
         .blog-category {
             background: var(--accent-gold);
-            color: var(--primary-brown);
+            color: #2C1810;
             padding: 0.25rem 0.75rem;
             border-radius: 15px;
             font-weight: 600;
@@ -251,12 +252,19 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav-container">
-            <div class="logo">
+            <a href="index.html" class="logo" style="text-decoration: none;">
                 <div class="logo-icon">☕</div>
                 <span>Coffee Haven</span>
-            </div>
+            </a>
 
             <ul class="nav-menu">
+                <li class="mobile-theme-toggle theme-toggle-btn">
+                    <span>Theme</span>
+                    <button class="theme-btn" aria-label="Toggle dark mode">
+                        <span class="theme-icon-light">☀️</span>
+                        <span class="theme-icon-dark">🌙</span>
+                    </button>
+                </li>
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="home2.html" class="nav-link">Home 2</a></li>
                 <li><a href="menu.html" class="nav-link">Menu</a></li>
@@ -269,6 +277,10 @@
             </ul>
 
             <div class="nav-buttons">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+                    <span class="theme-icon-light">☀️</span>
+                    <span class="theme-icon-dark">🌙</span>
+                </button>
                 <a href="login.html" class="btn btn-secondary nav-btn">Login</a>
                 <a href="register.html" class="btn btn-primary nav-btn">Register</a>
             </div>
@@ -285,7 +297,9 @@
     <section class="blog-hero">
         <div class="container">
             <h1>Coffee Blog</h1>
-            <p>Because I enjoy coffee, I follow a mix of both technical and fun. I enjoy the more technical blogs for the information and what I learn, but I also follow other coffee bloggers to see what they are drinking and what coffee shops they are visiting.</p>
+            <p>Because I enjoy coffee, I follow a mix of both technical and fun. I enjoy the more technical blogs for
+                the information and what I learn, but I also follow other coffee bloggers to see what they are drinking
+                and what coffee shops they are visiting.</p>
         </div>
     </section>
 

@@ -53,6 +53,7 @@
     --header-bg: linear-gradient(135deg, #2C1810, #4A2C1A);
     --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     --title-color: #2C1810;
+    --find-us-color: #FFFFFF;
 }
 
 /* Dark Theme Overrides */
@@ -67,11 +68,26 @@
     --card-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
     --title-color: #D4A574;
 
-    /* Global Overrides for Dark Mode */
-    --white: #1C1814;
+    /* Fix invisible text in dark mode */
+    --primary-brown: #D4A574;
+    /* card titles, links — use gold instead of dark brown */
+    --secondary-brown: #C49060;
+    --text-muted: #BAA391;
+    /* body text, card paragraphs */
+    --cream: #1C1814;
+    /* section backgrounds that use var(--cream) */
+    --light-cream: #12100E;
+
+    /* Hardcoded dark brown for elements on gold backgrounds to ensure visibility */
+    --text-on-accent: #2C1810;
+
+    /* Keep white truly white for nav/logo text — do NOT override to dark */
     --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.4);
     --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.5);
     --shadow-heavy: 0 8px 30px rgba(0, 0, 0, 0.6);
+
+    /* Ensure specific headings on dark backgrounds are visible */
+    --find-us-color: #D4A574;
 }
 
 /* ===== Reset & Base Styles ===== */
@@ -121,9 +137,13 @@ h1 {
     font-weight: 800;
 }
 
-/* H1 on dark backgrounds */
+/* H1 and P on dark backgrounds */
 .hero h1,
-.text-on-dark h1 {
+[class*="-hero"] h1,
+.text-on-dark h1,
+.hero p,
+[class*="-hero"] p,
+.text-on-dark p {
     color: var(--text-on-dark) !important;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
@@ -197,23 +217,31 @@ a:focus {
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1400px;
+    /* Slightly wider for better headroom */
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 80px;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    /* Force single row */
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
     color: var(--white);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    /* Slightly smaller logo text */
     font-weight: 700;
     font-family: var(--font-primary);
+    flex-shrink: 0;
+    /* Don't squash logo */
+    white-space: nowrap;
 }
 
 .logo-icon {
@@ -231,9 +259,9 @@ a:focus {
     display: flex;
     list-style: none;
     gap: 0.5rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    /* Tighten menu spacing */
+    margin: 0;
+    flex-wrap: nowrap;
 }
 
 /* Hide button list items on desktop */
@@ -244,26 +272,31 @@ a:focus {
 
 .nav-buttons {
     display: flex;
-    gap: 0.25rem;
+    gap: 0.5rem;
+    /* Consistent gap */
     align-items: center;
+    flex-shrink: 0;
+    /* Keep buttons together */
 }
 
 .nav-link {
     color: var(--white);
-    font-weight: 500;
-    padding: 0.4rem 0.8rem;
-    /* Reduced padding */
-    border-radius: 25px;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    /* Tighter links */
+    border-radius: 20px;
     transition: var(--transition-smooth);
     position: relative;
-    font-size: 0.9rem;
-    /* Added smaller font size */
+    font-size: 0.85rem;
+    /* Slightly smaller font */
+    white-space: nowrap;
 }
 
 .nav-link:hover,
 .nav-link.active {
     background: var(--accent-gold);
-    color: var(--primary-brown);
+    color: #2C1810;
+    /* always dark on gold bg, regardless of theme */
     transform: translateY(-2px);
 }
 
@@ -284,12 +317,14 @@ a:focus {
 
 .nav-btn.btn-secondary:hover {
     background: var(--white);
-    color: var(--primary-brown);
+    color: #2C1810;
+    /* always dark on white bg, regardless of theme */
 }
 
 .nav-btn.btn-primary {
     background: linear-gradient(135deg, var(--accent-gold), var(--light-gold));
-    color: var(--primary-brown);
+    color: #2C1810;
+    /* always dark on gold bg, regardless of theme */
 }
 
 .nav-btn.btn-primary:hover {
@@ -342,24 +377,30 @@ a:focus {
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 
+/* In light mode: hide sun, show moon (click = go dark) */
 [data-theme="light"] .theme-icon-light {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-[data-theme="light"] .theme-icon-dark {
-    transform: translateY(30px);
-    opacity: 0;
-}
-
-[data-theme="dark"] .theme-icon-light {
     transform: translateY(-30px);
     opacity: 0;
 }
 
-[data-theme="dark"] .theme-icon-dark {
+[data-theme="light"] .theme-icon-dark {
     transform: translateY(0);
     opacity: 1;
+}
+
+/* In dark mode: show sun, hide moon (click = go light) */
+[data-theme="dark"] .theme-icon-light {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+[data-theme="dark"] .theme-icon-dark {
+    transform: translateY(30px);
+    opacity: 0;
+}
+
+.mobile-theme-toggle {
+    display: none;
 }
 
 /* ===== Buttons ===== */
@@ -391,7 +432,8 @@ a:focus {
 
 .btn-primary {
     background: linear-gradient(135deg, var(--accent-gold), var(--light-gold));
-    color: var(--primary-brown);
+    color: #2C1810;
+    /* always dark on gold bg, regardless of theme */
     box-shadow: var(--shadow-light);
 }
 
@@ -408,7 +450,8 @@ a:focus {
 
 .btn-secondary:hover {
     background: var(--white);
-    color: var(--primary-brown);
+    color: #2C1810;
+    /* always dark on white bg, regardless of theme */
     transform: translateY(-2px);
 }
 
@@ -529,7 +572,7 @@ a:focus {
 .hero-alt p {
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     margin-bottom: var(--space-lg);
-    color: var(--cream) !important;
+    color: var(--text-on-dark) !important;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     font-family: var(--font-secondary);
     max-width: 800px;
@@ -990,8 +1033,9 @@ a:focus {
 
 /* ===== Footer ===== */
 .footer {
-    background: linear-gradient(135deg, var(--primary-brown), var(--secondary-brown));
-    color: var(--text-on-dark);
+    background: linear-gradient(135deg, #2C1810, #4A2C1A);
+    /* always dark, regardless of theme */
+    color: #F5E6D3;
     padding: var(--space-xxl) 0 var(--space-md) 0;
     margin-top: var(--space-xxl);
 }
@@ -1004,14 +1048,16 @@ a:focus {
 }
 
 .footer-section h3 {
-    color: var(--accent-gold);
+    color: #E6C9A8;
+    /* light gold — always visible on dark footer bg */
     margin-bottom: var(--space-sm);
     font-size: 1.25rem;
     font-family: var(--font-primary);
 }
 
 .footer-section p {
-    color: var(--cream);
+    color: #D4C4B0;
+    /* always light on dark footer bg */
     margin-bottom: var(--space-sm);
     line-height: 1.6;
 }
@@ -1027,7 +1073,8 @@ a:focus {
     align-items: flex-start;
     gap: 0.75rem;
     margin-bottom: 0.75rem;
-    color: var(--cream);
+    color: #D4C4B0;
+    /* always light on dark footer bg */
     font-size: 0.9rem;
     line-height: 1.4;
 }
@@ -1047,7 +1094,8 @@ a:focus {
 }
 
 .footer-links a {
-    color: var(--cream);
+    color: #D4C4B0;
+    /* always light on dark footer bg */
     transition: var(--transition-smooth);
 }
 
@@ -1107,8 +1155,9 @@ a:focus {
 .footer-bottom {
     text-align: center;
     padding-top: var(--space-md);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--cream);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    color: #D4C4B0;
+    /* always light on dark footer bg */
     font-size: 0.9rem;
 }
 
@@ -1296,6 +1345,23 @@ a:focus {
     .nav-link.active {
         background: var(--accent-gold);
         color: var(--primary-brown);
+    }
+
+    .mobile-theme-toggle {
+        display: flex !important;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 2rem;
+        color: var(--text-on-dark);
+        cursor: pointer;
+        width: 100%;
+        justify-content: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 1rem;
+    }
+
+    .mobile-theme-toggle .theme-btn {
+        margin-right: 0;
     }
 
     .nav-btn {
