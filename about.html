@@ -1,65 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Coffee Haven</title>
-    <meta name="description" content="Learn about Coffee Haven's story, our passion for coffee, and our commitment to quality and sustainability">
-    
+    <meta name="description"
+        content="Learn about Coffee Haven's story, our passion for coffee, and our commitment to quality and sustainability">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-    
+
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
-    
+    <link rel="icon" type="image/x-icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+
     <!-- Additional CSS for About Page -->
     <style>
         /* About page specific styles */
         .about-hero {
-            background: linear-gradient(135deg, rgba(44,24,16,0.92), rgba(74,44,26,0.92)),
-                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=600&fit=crop&auto=format') center/cover;
             padding: calc(80px + var(--space-xxl)) 0 var(--space-xxl) 0;
-            text-align: center;
-            color: var(--text-on-dark);
-            position: relative;
-            overflow: hidden;
             margin-top: -80px;
         }
-        
-        .about-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.1);
-            z-index: 1;
-        }
-        
+
         .about-hero .container {
             position: relative;
             z-index: 2;
         }
-        
+
         .about-hero h1 {
             font-size: clamp(2.5rem, 6vw, 3.5rem);
             margin-bottom: var(--space-sm);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
-        
+
         .story-section {
             padding: var(--space-xxl) 0;
             background: var(--cream);
         }
-        
+
         .story-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -67,7 +55,7 @@
             align-items: center;
             margin-bottom: var(--space-xl);
         }
-        
+
         .story-content h3 {
             color: var(--primary-brown);
             font-size: clamp(1.5rem, 4vw, 2rem);
@@ -75,7 +63,7 @@
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
-        
+
         .story-content p {
             color: var(--text-muted);
             line-height: 1.7;
@@ -83,16 +71,16 @@
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
-        
+
         .story-image {
-            background: url('https://images.unsplash.com/photo-1511920183-9f7106036526?w=600&h=400&fit=crop&auto=format') center/cover;
+            background: url('images/hero/about-hero-bg.jpg') center/cover;
             border-radius: 16px;
             min-height: 400px;
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow-medium);
         }
-        
+
         .story-image::before {
             content: '';
             position: absolute;
@@ -100,16 +88,16 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(44,24,16,0.3), rgba(74,44,26,0.3));
+            background: linear-gradient(135deg, rgba(44, 24, 16, 0.3), rgba(74, 44, 26, 0.3));
         }
-        
+
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: var(--space-lg);
             margin-top: var(--space-xl);
         }
-        
+
         .value-card {
             background: var(--white);
             padding: var(--space-lg);
@@ -120,18 +108,18 @@
             border-top: 4px solid var(--accent-gold);
             overflow: hidden;
         }
-        
+
         .value-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-medium);
         }
-        
+
         .value-icon {
             font-size: 3rem;
             margin-bottom: var(--space-md);
             color: var(--accent-gold);
         }
-        
+
         .value-title {
             color: var(--primary-brown);
             font-size: clamp(1.25rem, 3vw, 1.5rem);
@@ -140,25 +128,25 @@
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
-        
+
         .value-description {
             color: var(--text-muted);
             line-height: 1.6;
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
-        
+
         .team-section {
             padding: var(--space-xxl) 0;
         }
-        
+
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: var(--space-lg);
             margin-top: var(--space-xl);
         }
-        
+
         .team-member {
             background: var(--white);
             border-radius: 15px;
@@ -167,12 +155,12 @@
             transition: var(--transition-smooth);
             text-align: center;
         }
-        
+
         .team-member:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-heavy);
         }
-        
+
         .member-image {
             height: 200px;
             background: linear-gradient(135deg, var(--accent-gold), var(--light-gold));
@@ -182,29 +170,29 @@
             font-size: 3rem;
             color: var(--primary-brown);
         }
-        
+
         .member-info {
             padding: 1.5rem;
         }
-        
+
         .member-name {
             color: var(--primary-brown);
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
             font-family: var(--font-primary);
         }
-        
+
         .member-role {
             color: var(--accent-gold);
             font-weight: 600;
             margin-bottom: 1rem;
         }
-        
+
         .timeline {
             position: relative;
             padding: 2rem 0;
         }
-        
+
         .timeline::before {
             content: '';
             position: absolute;
@@ -215,18 +203,18 @@
             background: var(--accent-gold);
             transform: translateX(-50%);
         }
-        
+
         .timeline-item {
             display: flex;
             align-items: center;
             margin-bottom: 3rem;
             position: relative;
         }
-        
+
         .timeline-item:nth-child(even) {
             flex-direction: row-reverse;
         }
-        
+
         .timeline-content {
             flex: 1;
             padding: 2rem;
@@ -235,13 +223,13 @@
             box-shadow: var(--shadow-light);
             margin: 0 2rem;
         }
-        
+
         .timeline-date {
             color: var(--accent-gold);
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
-        
+
         .timeline-icon {
             width: 60px;
             height: 60px;
@@ -257,53 +245,54 @@
             transform: translateX(-50%);
             z-index: 2;
         }
-        
+
         @media (max-width: 768px) {
             .story-grid {
                 grid-template-columns: 1fr;
                 gap: var(--space-lg);
             }
-            
+
             .story-image {
                 min-height: 300px;
             }
-            
+
             .values-grid {
                 grid-template-columns: 1fr;
                 gap: var(--space-md);
             }
-            
+
             .timeline::before {
                 left: 20px;
             }
-            
+
             .timeline-item {
                 flex-direction: column !important;
                 padding-left: 60px;
             }
-            
+
             .timeline-item:nth-child(even) {
                 flex-direction: column !important;
             }
-            
+
             .timeline-icon {
                 left: 20px;
                 width: 40px;
                 height: 40px;
                 font-size: 1rem;
             }
-            
+
             .timeline-content {
                 margin: 0;
                 width: 100%;
             }
-            
+
             .about-hero h1 {
                 font-size: 2.5rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -312,7 +301,7 @@
                 <div class="logo-icon">☕</div>
                 <span>Coffee Haven</span>
             </div>
-            
+
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="home2.html" class="nav-link">Home 2</a></li>
@@ -321,10 +310,15 @@
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
                 <li><a href="gallery.html" class="nav-link">Gallery</a></li>
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
-                <li><a href="login.html" class="nav-link">Login</a></li>
-                <li><a href="register.html" class="nav-link">Register</a></li>
+                <li><a href="login.html" class="btn btn-secondary nav-btn">Login</a></li>
+                <li><a href="register.html" class="btn btn-primary nav-btn">Register</a></li>
             </ul>
-            
+
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-secondary nav-btn">Login</a>
+                <a href="register.html" class="btn btn-primary nav-btn">Register</a>
+            </div>
+
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -337,7 +331,7 @@
     <section class="about-hero">
         <div class="container">
             <h1>Our Coffee Story</h1>
-            <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto;">From a small roastery to a beloved coffee destination, our journey is fueled by passion and dedication to the perfect cup</p>
+            <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto;">Our Coffee is grown by small coffee farmers in some of the most renowned growing regions in the world like Colombia and Guatemala. The process of cultivating coffee in the rugged terrain of our producing countries is often an artisanal process. This is truly a labour of love and coffee grown with care.</p>
         </div>
     </section>
 
@@ -346,37 +340,47 @@
         <div class="container">
             <h2 class="section-title">The Beginning</h2>
             <p class="section-subtitle">How Coffee Haven came to be</p>
-            
+
             <div class="story-grid">
                 <div class="story-content">
                     <h3>A Dream Born from Passion</h3>
-                    <p>Coffee Haven began in 2015 as a small roastery with a big dream: to bring exceptional coffee to our community. Our founder, a coffee enthusiast with years of experience in the industry, wanted to create a space where coffee lovers could experience the true art of coffee.</p>
-                    <p>What started as a modest operation with a single roasting machine has grown into a thriving coffee destination, but our commitment to quality and passion for coffee remains unchanged.</p>
+                    <p>Coffee Haven began in 2015 as a small roastery with a big dream: to bring exceptional coffee to
+                        our community. Our founder, a coffee enthusiast with years of experience in the industry, wanted
+                        to create a space where coffee lovers could experience the true art of coffee.</p>
+                    <p>What started as a modest operation with a single roasting machine has grown into a thriving
+                        coffee destination, but our commitment to quality and passion for coffee remains unchanged.</p>
                 </div>
-                <div class="story-image">
-                    <div class="icon-leaf" style="font-size: 4rem; color: var(--accent-gold);"></div>
+                <div class="story-image"
+                    style="background-image: url('https://thefrenchmanor.com/_next/image?url=https%3A%2F%2Fmedia-bridge.thinkreservations.com%2FeyJidWNrZXQiOiJwcm9kdWN0aW9uLXRoaW5rcmVzZXJ2YXRpb25zLW1lZGlhLWJyaWRnZSIsImtleSI6InRoaW5rLXdlYi1tZWRpYS9ob3RlbHMvNTgxOTI0MjUzNDUyL2IxNzRhNzEwLTllOTAtNGNiMS1iNzAwLWE1ODQyMGM1M2QxOC9iZXN0LWNvZmZlZS1pbi10aGUtUG9jb25vcy5wbmcifQ%3D%3D&w=3840&q=75'); background-size: cover; background-position: center;">
                 </div>
             </div>
-            
+
             <div class="story-grid">
-                <div class="story-image">
-                    <div class="icon-fire" style="font-size: 4rem; color: var(--accent-gold);"></div>
+                <div class="story-image"
+                    style="background-image: url('https://weaverscoffee.com/cdn/shop/articles/Roasted_coffee_beans_turning_in_a_cooling_tray_of_a_45_kilo_Probat_coffee_roaster_1000x.jpg?v=1696029182'); background-size: cover; background-position: center;">
                 </div>
                 <div class="story-content">
                     <h3>The Art of Roasting</h3>
-                    <p>At the heart of Coffee Haven is our dedication to the craft of coffee roasting. We believe that great coffee starts with great beans, but it's the roasting process that truly brings out their potential.</p>
-                    <p>Our master roasters spend countless hours perfecting roast profiles for each coffee variety, ensuring that every batch highlights the unique characteristics of its origin while maintaining consistency and quality.</p>
+                    <p>At the heart of Coffee Haven is our dedication to the craft of coffee roasting. We believe that
+                        great coffee starts with great beans, but it's the roasting process that truly brings out their
+                        potential.</p>
+                    <p>Our master roasters spend countless hours perfecting roast profiles for each coffee variety,
+                        ensuring that every batch highlights the unique characteristics of its origin while maintaining
+                        consistency and quality.</p>
                 </div>
             </div>
-            
+
             <div class="story-grid">
                 <div class="story-content">
                     <h3>Community & Connection</h3>
-                    <p>Coffee has always been about bringing people together. From the coffee farms we work with to the customers we serve every day, we believe in building meaningful connections through our shared love of coffee.</p>
-                    <p>Our coffee shop is more than just a place to get great coffee – it's a community hub where friends meet, work gets done, and memories are made over the perfect cup.</p>
+                    <p>Coffee has always been about bringing people together. From the coffee farms we work with to the
+                        customers we serve every day, we believe in building meaningful connections through our shared
+                        love of coffee.</p>
+                    <p>Our coffee shop is more than just a place to get great coffee – it's a community hub where
+                        friends meet, work gets done, and memories are made over the perfect cup.</p>
                 </div>
-                <div class="story-image">
-                    <div class="icon-heart" style="font-size: 4rem; color: var(--accent-gold);"></div>
+                <div class="story-image"
+                    style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8ngiorQUVgchtu8GTIILwqHBI5ZZc50M0JQ&s'); background-size: cover; background-position: center;">
                 </div>
             </div>
         </div>
@@ -387,130 +391,95 @@
         <div class="container">
             <h2 class="section-title">Our Values</h2>
             <p class="section-subtitle">The principles that guide everything we do</p>
-            
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon icon-fire" style="font-size: 3rem; color: var(--accent-gold);"></div>
-                    <h3 class="value-title">Sustainability</h3>
-                    <p>We're committed to sustainable practices from farm to cup, working with farmers who use environmentally friendly growing methods and reducing our carbon footprint through responsible operations.</p>
+
+
+
+            <div class="card">
+                <div class="card-image"
+                    style="background-image: url('https://www.coffeebeancorral.com/blog/image.axd?picture=/andrew-neel-66NjVBij7P8-unsplash.jpg'); background-size: cover; background-position: center; height: 200px;">
                 </div>
-                
-                <div class="value-card">
-                    <div class="value-icon icon-leaf" style="font-size: 3rem; color: var(--accent-gold);"></div>
-                    <h3 class="value-title">Quality</h3>
-                    <p>Quality is at the core of everything we do. From sourcing the finest beans to training our baristas, we never compromise on excellence in our pursuit of the perfect coffee experience.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon icon-heart" style="font-size: 3rem; color: var(--accent-gold);"></div>
-                    <h3 class="value-title">Community</h3>
-                    <p>We believe in the power of community and strive to create a welcoming space where everyone feels at home. We support local initiatives and give back to the community that supports us.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon icon-globe" style="font-size: 3rem; color: var(--accent-gold);"></div>
-                    <h3 class="value-title">Education</h3>
-                    <p>We're passionate about sharing our knowledge of coffee with others. From brewing workshops to cupping sessions, we love helping people discover and appreciate the complexities of great coffee.</p>
+                <div class="card-content">
+                    <h3 class="card-title">Quality</h3>
+                    <p class="card-description">Quality is at the core of everything we do. From sourcing the finest
+                        beans to training our baristas, we never compromise on excellence in our pursuit of the perfect
+                        coffee experience.</p>
                 </div>
             </div>
+
+            <div class="card">
+                <div class="card-image"
+                    style="background-image: url('https://www.caliohcoffee.com/cdn/shop/articles/Blog_Headers_May_15_1024x683.png?v=1686682016'); background-size: cover; background-position: center; height: 200px;">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Community</h3>
+                    <p class="card-description">We believe in the power of community and strive to create a welcoming
+                        space where everyone feels at home. We support local initiatives and give back to the community
+                        that supports us.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image"
+                    style="background-image: url('https://previews.123rf.com/images/wedninth/wedninth1612/wedninth161200120/68242776-coffee-in-white-cup-with-journal-book-and-smart-phone.jpg'); background-size: cover; background-position: center; height: 200px;">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Education</h3>
+                    <p class="card-description">We're passionate about sharing our knowledge of coffee with others. From
+                        brewing workshops to cupping sessions, we love helping people discover and appreciate the
+                        complexities of great coffee.</p>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
 
     <!-- Our Journey Timeline -->
-    <section class="section" style="background: var(--cream);">
-        <div class="container">
-            <h2 class="section-title">Our Journey</h2>
-            <p class="section-subtitle">Milestones that shaped Coffee Haven</p>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-icon icon-bean" style="color: var(--white);"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2015</div>
-                        <h3>First Roastery</h3>
-                        <p>Opened our first small roastery with a single roasting machine and a dream to share exceptional coffee with our community.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-icon icon-cup" style="color: var(--white);"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2017</div>
-                        <h3>Coffee Shop Opening</h3>
-                        <p>Expanded to include our first coffee shop, creating a welcoming space for customers to enjoy our freshly roasted coffee.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-icon icon-leaf" style="color: var(--white);"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2019</div>
-                        <h3>Sustainable Sourcing</h3>
-                        <p>Established direct relationships with coffee farmers and committed to 100% ethically sourced coffee.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-icon icon-star" style="background: var(--accent-gold); color: var(--primary-brown); font-weight: bold;"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2021</div>
-                        <h3>Award Recognition</h3>
-                        <p>Received multiple awards for our coffee quality and roasting excellence, including Best Local Roaster.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-icon"><span class="icon-location"></span></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2023</div>
-                        <h3>Expansion</h3>
-                        <p>Expanded our operations with a larger roasting facility and opened our second location to serve more customers.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Meet Our Team -->
     <section class="team-section">
         <div class="container">
             <h2 class="section-title">Meet Our Team</h2>
             <p class="section-subtitle">The passionate people behind your perfect cup</p>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image icon-bean" style="font-size: 3rem; color: var(--accent-gold);"></div>
-                    <div class="member-info">
-                        <h3 class="member-name">James Mitchell</h3>
-                        <p class="member-role">Founder & Head Roaster</p>
-                        <p>With over 15 years in the coffee industry, James brings expertise and passion to every batch he roasts.</p>
+
+            <div class="grid grid-4" style="gap: 2rem; margin-top: 3rem;">
+                <div class="card">
+                    <div class="card-image"
+                        style="background-image: url('https://image.cnbcfm.com/api/v1/image/108130012-1744294170118-gettyimages-2198348663-AFP_36XM7KW.jpeg?v=1744294185&w=800&h=600&ffmt=webp'); background-size: cover; background-position: center; height: 250px;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">James Mitchell</h3>
+                        <p class="card-description" style="color: var(--accent-gold); font-weight: 600;">Founder</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">With over 15 years in the coffee industry,
+                            James brings expertise and passion to every batch he roasts.</p>
                     </div>
                 </div>
-                
-                <div class="team-member">
-                    <div class="member-image icon-cup" style="font-size: 3rem; color: var(--accent-gold);"></div>
-                    <div class="member-info">
-                        <h3 class="member-name">Sarah Chen</h3>
-                        <p class="member-role">General Manager</p>
-                        <p>Sarah ensures every customer has an exceptional experience and manages our daily operations with precision.</p>
+
+
+
+                <div class="card">
+                    <div class="card-image"
+                        style="background-image: url('https://in.bmscdn.com/iedb/artist/images/website/poster/large/sam-rockwell-10499-22-02-2018-01-30-48.jpg'); background-size: cover; background-position: center; height: 250px;">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Michael Rodriguez</h3>
+                        <p class="card-description" style="color: var(--accent-gold); font-weight: 600;">Master Barista
+                        </p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Michael's creativity and attention to detail
+                            make every coffee drink a work of art.</p>
                     </div>
                 </div>
-                
-                <div class="team-member">
-                    <div class="member-image icon-cup" style="font-size: 3rem; color: var(--accent-gold);"></div>
-                    <div class="member-info">
-                        <h3 class="member-name">Michael Rodriguez</h3>
-                        <p class="member-role">Master Barista</p>
-                        <p>Michael's creativity and attention to detail make every coffee drink a work of art.</p>
+
+                <div class="card">
+                    <div class="card-image"
+                        style="background-image: url('https://media.istockphoto.com/id/1197578214/photo/beautiful-young-woman.jpg?s=612x612&w=0&k=20&c=XdV1GLQalvNSXKsBv4C0vRDjPfiBOArH6BC_iCFtchg='); background-size: cover; background-position: center; height: 250px;">
                     </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-image icon-bean" style="font-size: 3rem; color: var(--accent-gold);"></div>
-                    <div class="member-info">
-                        <h3 class="member-name">Emma Thompson</h3>
-                        <p class="member-role">Sourcing Manager</p>
-                        <p>Emma travels the world to find the finest coffee beans and build relationships with our farming partners.</p>
+                    <div class="card-content">
+                        <h3 class="card-title">Emma Thompson</h3>
+                        <p class="card-description" style="color: var(--accent-gold); font-weight: 600;">Sourcing
+                            Manager</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Emma travels the world to find the finest
+                            coffee beans and build relationships with our farming partners.</p>
                     </div>
                 </div>
             </div>
@@ -522,10 +491,9 @@
         <div class="container text-center">
             <h2 class="section-title">Join Our Coffee Family</h2>
             <p class="section-subtitle">Experience the difference that passion and quality make in every cup</p>
-            
+
             <div style="margin-top: 3rem;">
                 <a href="contact.html" class="btn btn-primary" style="margin-right: 1rem;">Visit Us</a>
-                <a href="menu.html" class="btn btn-secondary">Try Our Coffee</a>
             </div>
         </div>
     </section>
@@ -535,16 +503,42 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
+                    <div class="logo" style="margin-bottom: 1.5rem;">
+                        <div class="logo-icon">☕</div>
+                        <span>Coffee Haven</span>
+                    </div>
                     <h3>About Coffee Haven</h3>
-                    <p>Your premier destination for exceptional coffee experiences. From carefully sourced beans to expertly crafted drinks, we're passionate about bringing you the perfect cup.</p>
+                    <p>Your premier destination for exceptional coffee experiences. From carefully sourced beans to
+                        expertly crafted drinks, we're passionate about bringing you the perfect cup.</p>
                     <div class="social-icons">
-                        <a href="#" class="social-icon facebook" aria-label="Facebook"></a>
-                        <a href="#" class="social-icon instagram" aria-label="Instagram"></a>
-                        <a href="#" class="social-icon twitter" aria-label="Twitter"></a>
-                        <a href="#" class="social-icon linkedin" aria-label="LinkedIn"></a>
+                        <a href="#" class="social-icon" aria-label="Facebook" style="background: #1877F2;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram"
+                            style="background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter" style="background: #1DA1F2;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path
+                                    d="M23.953 4.57a10 10 0 0 1-2.825.775 4.958 4.958 0 0 0 2.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 0 0-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 0 0-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.06a4.923 4.923 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.212.085 4.936 4.936 0 0 0 4.604 3.417 9.867 9.867 0 0 1-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 0 0 7.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0 0 24 4.59z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn" style="background: #0077B5;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
@@ -556,22 +550,37 @@
                         <li><a href="login.html">Login</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>Contact Information</h3>
-                    <p><span class="icon-location"></span> 123 Coffee Street<br>Brew City, BC 12345</p>
-                    <p><span class="icon-phone"></span> (555) 123-4567</p>
-                    <p><span class="icon-email"></span> hello@coffeehaven.com</p>
-                    <p><span class="icon-clock"></span> Daily: 6:00 AM - 10:00 PM</p>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <span class="footer-icon">📍</span>
+                            <span>123 Coffee Street, Brew City, BC 12345</span>
+                        </li>
+                        <li>
+                            <span class="footer-icon">📞</span>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li>
+                            <span class="footer-icon">✉️</span>
+                            <span>hello@coffeehaven.com</span>
+                        </li>
+                        <li>
+                            <span class="footer-icon">🕒</span>
+                            <span>Daily: 6:00 AM - 10:00 PM</span>
+                        </li>
+                    </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>Coffee Tours</h3>
-                    <p>Join us for a behind-the-scenes tour of our roastery and learn about our coffee-making process.</p>
+                    <p>Join us for a behind-the-scenes tour of our roastery and learn about our coffee-making process.
+                    </p>
                     <a href="contact.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Book Tour</a>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; 2024 Coffee Haven. All rights reserved. | Premium Coffee & Roastery Experience</p>
             </div>
@@ -581,4 +590,5 @@
     <!-- JavaScript -->
     <script src="js/script.js"></script>
 </body>
+
 </html>
