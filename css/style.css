@@ -744,6 +744,23 @@ a:focus {
     font-family: var(--font-primary);
 }
 
+.best-sellers-grid .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.best-sellers-grid .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.best-sellers-grid .btn {
+    margin-top: auto;
+    align-self: center;
+}
+
 .icon-coffee {
     background: linear-gradient(135deg, var(--accent-gold), var(--light-gold));
     -webkit-background-clip: text;
@@ -1042,9 +1059,15 @@ a:focus {
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--space-lg);
     margin-bottom: var(--space-lg);
+}
+
+.footer-content>.footer-section:last-child {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
 }
 
 .footer-section h3 {

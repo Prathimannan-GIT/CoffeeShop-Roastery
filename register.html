@@ -26,7 +26,8 @@
     <style>
         /* Full viewport layout - no scrolling */
         .auth-page-wrapper {
-            min-height: 100vh;
+            min-height: calc(100vh - 80px);
+            min-height: calc(100dvh - 80px);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -38,7 +39,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: var(--space-md);
+            padding: var(--space-sm);
             background: linear-gradient(135deg, rgba(44, 24, 16, 0.92), rgba(74, 44, 26, 0.92)),
                 url('https://images.unsplash.com/photo-1511920183-9f7106036526?w=1200&h=800&fit=crop&auto=format') center/cover;
             position: relative;
@@ -59,12 +60,12 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
         }
 
         .auth-form-container {
             background: var(--white);
-            padding: var(--space-xl);
+            padding: 1.5rem;
             border-radius: 20px;
             box-shadow: var(--shadow-heavy);
             border: 1px solid rgba(212, 165, 116, 0.1);
@@ -73,7 +74,7 @@
         .auth-form h3 {
             color: var(--primary-brown);
             font-size: clamp(1.5rem, 4vw, 2rem);
-            margin-bottom: var(--space-lg);
+            margin-bottom: var(--space-sm);
             text-align: center;
             font-family: var(--font-primary);
             word-wrap: break-word;
@@ -81,7 +82,7 @@
         }
 
         .form-group {
-            margin-bottom: var(--space-md);
+            margin-bottom: 0.75rem;
         }
 
         .form-label {
@@ -94,7 +95,7 @@
 
         .form-input {
             width: 100%;
-            padding: var(--space-sm);
+            padding: 0.75rem;
             border: 2px solid var(--light-brown);
             border-radius: 12px;
             font-size: 1rem;
@@ -113,14 +114,14 @@
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--space-sm);
+            gap: 0.75rem;
         }
 
         .form-checkbox {
             display: flex;
             align-items: center;
             gap: var(--space-xs);
-            margin-bottom: var(--space-md);
+            margin-bottom: 0.75rem;
         }
 
         .form-checkbox input[type="checkbox"] {
@@ -139,7 +140,7 @@
             width: 50%;
             display: block;
             margin: 0 auto;
-            padding: var(--space-sm) var(--space-lg);
+            padding: 0.75rem var(--space-lg);
             background: linear-gradient(135deg, var(--accent-gold), var(--light-gold));
             color: #2C1810;
             /* Always dark brown for visibility on gold background */
@@ -173,14 +174,14 @@
 
         .form-links {
             text-align: center;
-            margin-top: var(--space-lg);
-            padding-top: var(--space-lg);
+            margin-top: var(--space-sm);
+            padding-top: var(--space-sm);
             border-top: 1px solid var(--cream);
         }
 
         .form-links p {
             color: var(--text-muted);
-            margin-bottom: var(--space-sm);
+            margin-bottom: 0.5rem;
             font-size: 0.9rem;
         }
 
@@ -198,15 +199,15 @@
 
         /* Social login buttons */
         .social-login {
-            margin-top: var(--space-lg);
-            padding-top: var(--space-lg);
+            margin-top: var(--space-sm);
+            padding-top: var(--space-sm);
             border-top: 1px solid var(--cream);
         }
 
         .social-login h4 {
             text-align: center;
             color: var(--text-muted);
-            margin-bottom: var(--space-md);
+            margin-bottom: 0.75rem;
             font-size: 0.9rem;
             font-weight: 500;
         }
@@ -218,8 +219,8 @@
         }
 
         .social-btn {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             border: 2px solid var(--light-brown);
             background: var(--white);
@@ -268,7 +269,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .auth-content {
-                padding: var(--space-sm);
+                padding: 0.75rem;
             }
 
             .auth-form-wrapper {
@@ -276,23 +277,23 @@
             }
 
             .auth-form-container {
-                padding: var(--space-lg);
+                padding: 1.25rem;
             }
 
             .form-row {
                 grid-template-columns: 1fr;
-                gap: 0;
+                gap: 0.25rem;
             }
         }
 
         @media (max-width: 480px) {
             .auth-form-container {
-                padding: var(--space-md);
+                padding: 1rem;
             }
 
             .btn-register {
                 width: 80%;
-                padding: var(--space-md) var(--space-lg);
+                padding: 0.75rem var(--space-lg);
                 font-size: 0.95rem;
             }
         }
