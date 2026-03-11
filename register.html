@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- CSS -->
@@ -23,6 +23,12 @@
 
     <!-- Additional CSS for Register Page -->
     <style>
+        /* Update to professional fonts */
+        :root {
+            --font-primary: 'Outfit', sans-serif;
+            --font-secondary: 'Inter', sans-serif;
+        }
+
         /* Full viewport layout - no scrolling */
         .auth-page-wrapper {
             min-height: calc(100vh - 80px);
@@ -59,12 +65,12 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            max-width: 480px;
+            max-width: 440px;
         }
 
         .auth-form-container {
             background: var(--white);
-            padding: 1.5rem;
+            padding: 1.25rem 1.5rem;
             border-radius: 20px;
             box-shadow: var(--shadow-heavy);
             border: 1px solid rgba(212, 165, 116, 0.1);
@@ -73,23 +79,33 @@
         .auth-form h3 {
             color: var(--primary-brown);
             font-size: clamp(1.5rem, 4vw, 2rem);
-            margin-bottom: var(--space-sm);
+            margin-bottom: 0.5rem;
             text-align: center;
             font-family: var(--font-primary);
             word-wrap: break-word;
             overflow-wrap: break-word;
+            font-weight: 800;
+        }
+
+        .auth-form .welcome-sentence {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+            font-family: var(--font-secondary);
+            line-height: 1.5;
         }
 
         .form-group {
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.65rem;
         }
 
         .form-label {
             display: block;
-            margin-bottom: var(--space-xs);
+            margin-bottom: 0.35rem;
             color: var(--primary-brown);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .form-input {
@@ -111,15 +127,14 @@
         }
 
         .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
+            display: block;
+            /* Stack inputs one below another */
         }
 
         .form-checkbox {
             display: flex;
             align-items: center;
-            gap: var(--space-xs);
+            gap: 0.5rem;
             margin-bottom: 0.75rem;
         }
 
@@ -136,15 +151,15 @@
 
         /* Premium Register Button Design */
         .btn-register {
-            width: 50%;
+            width: 100%;
             display: block;
-            margin: 0 auto;
-            padding: 0.75rem var(--space-lg);
+            margin: 0;
+            padding: 0.85rem var(--space-lg);
             background: linear-gradient(135deg, var(--accent-gold), var(--light-gold));
             color: #2C1810;
             /* Always dark brown for visibility on gold background */
             border: none;
-            border-radius: 50px;
+            border-radius: 12px;
             font-size: 1rem;
             font-weight: 700;
             font-family: var(--font-secondary);
@@ -173,8 +188,8 @@
 
         .form-links {
             text-align: center;
-            margin-top: var(--space-sm);
-            padding-top: var(--space-sm);
+            margin-top: 1rem;
+            padding-top: 1rem;
             border-top: 1px solid var(--cream);
         }
 
@@ -322,6 +337,8 @@
 
                     <form class="auth-form" id="registerForm">
                         <h3>Create Account</h3>
+                        <p class="welcome-sentence">Start your journey with us. Join the community of coffee
+                            connoisseurs.</p>
 
                         <div class="form-row">
                             <div class="form-group">

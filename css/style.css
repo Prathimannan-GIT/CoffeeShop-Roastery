@@ -23,8 +23,8 @@
     --text-accent: #D4A574;
 
     /* Typography */
-    --font-primary: 'Playfair Display', serif;
-    --font-secondary: 'Montserrat', sans-serif;
+    --font-primary: 'Outfit', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
 
     /* Shadows */
     --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.08);
